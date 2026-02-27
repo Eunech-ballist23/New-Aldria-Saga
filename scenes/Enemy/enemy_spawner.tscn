@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://df4kes8oud1eq"]
+
+[ext_resource type="Script" uid="uid://dcs0jbh8ic0vw" path="res://scripts/enemy_spawner.gd" id="1_0eb7x"]
+[ext_resource type="PackedScene" uid="uid://bgpxhfrg2oigl" path="res://scenes/Enemy/slime.tscn" id="2_4oi7i"]
+
+[node name="enemy_spawner" type="Node2D" unique_id=883132796]
+z_index = 1
+script = ExtResource("1_0eb7x")
+enemy_scenes = Array[PackedScene]([ExtResource("2_4oi7i")])
+
+[node name="Timer" type="Timer" parent="." unique_id=1274214367]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

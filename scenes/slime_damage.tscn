@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://butayw5phmbcu"]
+
+[ext_resource type="Script" uid="uid://2u1ykuu8r3ud" path="res://scenes/slime_damage.gd" id="1_6wlp2"]
+
+[node name="slime_damage" type="Area2D" unique_id=1018655511]
+script = ExtResource("1_6wlp2")
+
+[connection signal="body_entered" from="." to="." method="_on_slime_body_damage"]

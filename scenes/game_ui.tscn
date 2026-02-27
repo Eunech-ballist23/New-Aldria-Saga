@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://bmq52f71g4u6n"]
+
+[ext_resource type="Script" uid="uid://cp6kkyg6u277h" path="res://scripts/main_menu.gd" id="1_rns2u"]
+[ext_resource type="Texture2D" uid="uid://dijetqpniw4q6" path="res://assets/Game menu designs/download (1).png" id="1_yubou"]
+
+[sub_resource type="SystemFont" id="SystemFont_yubou"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="SystemFont" id="SystemFont_ojb23"]
+font_names = PackedStringArray("Arial Rounded MT")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rns2u"]
+bg_color = Color(0.95686275, 0.89411765, 0.7294118, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yubou"]
+bg_color = Color(0.83137256, 0.6392157, 0.4509804, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="SystemFont" id="SystemFont_rns2u"]
+font_names = PackedStringArray("Arial Rounded MT")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u001w"]
+bg_color = Color(0.95686275, 0.89411765, 0.7294118, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_u2dgd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2dgd"]
+bg_color = Color(0.83137256, 0.6392157, 0.4509804, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="SystemFont" id="SystemFont_u001w"]
+font_names = PackedStringArray("Arial Rounded MT")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bt76a"]
+bg_color = Color(0.95686275, 0.89411765, 0.7294118, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djwj0"]
+bg_color = Color(0.83137256, 0.6392157, 0.4509804, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="GameUI" type="CanvasLayer" unique_id=889833031]
+
+[node name="MainMenu" type="Control" parent="." unique_id=2006730325]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rns2u")
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu" unique_id=1643502250]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yubou")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu" unique_id=1230527230]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -629.0
+offset_right = 629.0
+offset_bottom = 238.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="MainMenu/HBoxContainer" unique_id=1988578045]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.11514107, 0.046520837, 0.022509295, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.12834376, 0.12834376, 0.12834373, 1)
+theme_override_constants/paragraph_spacing = 900
+theme_override_constants/shadow_outline_size = 504
+theme_override_fonts/font = SubResource("SystemFont_yubou")
+theme_override_font_sizes/font_size = 170
+text = "Quest of Aldria"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu" unique_id=101877599]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37
+anchor_top = 0.409
+anchor_right = 0.63000005
+anchor_bottom = 1.0940001
+offset_left = -0.11001587
+offset_top = -0.03201294
+offset_right = 0.10992432
+offset_bottom = -75.91205
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="MainMenu/VBoxContainer" unique_id=1737444841]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.27058825, 0.19607843, 0.16470589, 1)
+theme_override_colors/icon_normal_color = Color(0.95686275, 0.89411765, 0.7294118, 1)
+theme_override_fonts/font = SubResource("SystemFont_ojb23")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_rns2u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yubou")
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="MainMenu/VBoxContainer" unique_id=1818290667]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.26972106, 0.19560367, 0.16473132, 1)
+theme_override_fonts/font = SubResource("SystemFont_rns2u")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_u001w")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxLine_u2dgd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u2dgd")
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="MainMenu/VBoxContainer" unique_id=1536555928]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.27058825, 0.19607843, 0.16470589, 1)
+theme_override_fonts/font = SubResource("SystemFont_u001w")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_bt76a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_djwj0")
+text = "Quit Game"

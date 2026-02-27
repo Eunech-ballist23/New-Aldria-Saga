@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://davoehkntqqo5"]
+
+[ext_resource type="Script" uid="uid://1ljqv7srdbc5" path="res://scripts/health_bar.gd" id="1_ahhtf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_toqtt"]
+font_size = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_toqtt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahhtf"]
+bg_color = Color(0.08006898, 0.8213448, 3.85046e-07, 1)
+corner_radius_top_left = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toqtt"]
+bg_color = Color(0.060530342, 0.060530365, 0.060530297, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo0fn"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_bottom_left = 2
+
+[node name="HUD" type="CanvasLayer" unique_id=263629411]
+
+[node name="MainUI" type="Control" parent="." unique_id=1680754986]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Topleft" type="MarginContainer" parent="MainUI" unique_id=306027696]
+layout_mode = 1
+offset_right = 52.0
+offset_bottom = 45.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/Topleft" unique_id=845468693]
+layout_mode = 2
+
+[node name="HeartContainer" type="HBoxContainer" parent="MainUI/Topleft/VBoxContainer" unique_id=1660288375]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainUI/Topleft/VBoxContainer/HeartContainer" unique_id=1264093434]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Health"
+label_settings = SubResource("LabelSettings_toqtt")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1723254248]
+z_index = 1
+offset_left = 69.0
+offset_top = 12.0
+offset_right = 309.0
+offset_bottom = 22.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxEmpty_toqtt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ahhtf")
+value = 60.0
+show_percentage = false
+script = ExtResource("1_ahhtf")
+
+[node name="DamageBar" type="ProgressBar" parent="HealthBar" unique_id=1746537543]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_toqtt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oo0fn")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="HealthBar" unique_id=1720097063]
+wait_time = 0.4
+one_shot = true

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bsn5qxnxmjkaj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1fje"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqepv"]
+bg_color = Color(0.078431375, 0.81960785, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ps4sl"]
+bg_color = Color(0.05882353, 0.05882353, 0.05882353, 1)
+
+[node name="EnemyHealthBar" type="ProgressBar" unique_id=772551262]
+z_index = 1
+custom_minimum_size = Vector2(32, 6)
+anchors_preset = -1
+anchor_right = 0.15
+anchor_bottom = 0.007
+offset_right = -1.5258789e-05
+offset_bottom = 0.39999962
+theme_override_styles/background = SubResource("StyleBoxEmpty_m1fje")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dqepv")
+value = 60.0
+show_percentage = false
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1316159199]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ps4sl")
+show_percentage = false
