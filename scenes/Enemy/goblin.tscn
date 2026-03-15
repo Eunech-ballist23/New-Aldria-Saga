@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bu1d5uhby3y8u" path="res://scripts/enemy/goblin_damage.gd" id="6_lqati"]
 [ext_resource type="Texture2D" uid="uid://bmyp3netpfiy2" path="res://assets/Orc mobs/PNG/Orc1/Without_shadow/orc1_walk_without_shadow.png" id="7_dnnjk"]
 [ext_resource type="Script" uid="uid://cq4u7ugnbn7fg" path="res://scripts/enemy/goblin_hurtbox.gd" id="9_dnnjk"]
+[ext_resource type="PackedScene" uid="uid://bsn5qxnxmjkaj" path="res://scenes/Enemy/enemy_health_bar.tscn" id="10_5o8w6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8m2n1"]
 atlas = ExtResource("1_u6mjv")
@@ -1311,6 +1312,12 @@ script = ExtResource("9_dnnjk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="goblin_hurtbox" unique_id=1267760916]
 shape = SubResource("CircleShape2D_dnnjk")
 debug_color = Color(0.06587776, 0.61400634, 0.5998566, 0.41960785)
+
+[node name="EnemyHealthBar" parent="." unique_id=772551262 groups=["enemies"] instance=ExtResource("10_5o8w6")]
+offset_left = -14.0
+offset_top = -20.0
+offset_right = 18.0
+offset_bottom = -16.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

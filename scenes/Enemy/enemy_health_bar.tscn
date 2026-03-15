@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bsn5qxnxmjkaj"]
 
+[ext_resource type="Script" uid="uid://c7b0ar2a2c7nb" path="res://scripts/enemy_health_bar.gd" id="1_dqepv"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1fje"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqepv"]
@@ -7,21 +9,34 @@ bg_color = Color(0.078431375, 0.81960785, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ps4sl"]
 bg_color = Color(0.05882353, 0.05882353, 0.05882353, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1fje"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="EnemyHealthBar" type="ProgressBar" unique_id=772551262]
 z_index = 1
-custom_minimum_size = Vector2(32, 6)
+custom_minimum_size = Vector2(32, 4)
 anchors_preset = -1
-anchor_right = 0.15
-anchor_bottom = 0.007
-offset_right = -1.5258789e-05
-offset_bottom = 0.39999962
+anchor_left = 0.006
+anchor_top = 0.017
+anchor_right = 0.156
+anchor_bottom = 0.025
+offset_left = 0.39999962
+offset_top = 0.39999962
+offset_right = 0.3999939
+offset_bottom = -2.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_m1fje")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dqepv")
 value = 60.0
 show_percentage = false
+script = ExtResource("1_dqepv")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1316159199]
+[node name="DamageBar" type="ProgressBar" parent="." unique_id=1316159199]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -30,4 +45,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_ps4sl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m1fje")
+value = 70.0
 show_percentage = false

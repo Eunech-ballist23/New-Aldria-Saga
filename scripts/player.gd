@@ -3,6 +3,8 @@ class_name Player
 
 # Signal to notify the HUD when health changes
 signal health_changed(new_health)
+#signal when a player died
+signal player_died
 
 @export var health = 20
 @export var speed = 90
@@ -95,3 +97,7 @@ func _on_animated_sprite_2d_animation_finished():
 		is_hurting = false
 	elif anim.begins_with("die"):
 		set_physics_process(false)
+		
+func die():
+	print("Player has died!")
+	player_died.emit()

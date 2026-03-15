@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bqrhmr610hi3p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2h4fe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gp320"]
+bg_color = Color(0.61545706, 0.22283408, 0.83344597, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ceemv"]
+bg_color = Color(0.05882353, 0.05882353, 0.05882353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fwt3"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="GolemBossHealthBar" type="ProgressBar" unique_id=1488171478]
+z_index = 1
+offset_right = 240.0
+offset_bottom = 7.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_2h4fe")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gp320")
+value = 60.0
+show_percentage = false
+
+[node name="DamageBar" type="ProgressBar" parent="." unique_id=1650262318]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 7.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ceemv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1fwt3")
+value = 70.0
+show_percentage = false

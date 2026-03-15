@@ -2,13 +2,17 @@ extends CharacterBody2D
 class_name EnemyBase
 
 @export var health: int = 3
+@export var max_health: int = health
 @export var speed: int = 50
 @export var knockback_strength: float = 150.0 
 @export var attack_range: float = 40.0
 @export var hitbox_shape: CollisionShape2D 
 
 @onready var sprite = $AnimatedSprite2D
+@onready var health_bar = $EnemyHealthBar
 
+# Add this variable at the top with your other states 
+var is_invincible: bool = false
 var is_attacking: bool = false
 var is_hurting: bool = false 
 var is_dead: bool = false    
@@ -22,6 +26,14 @@ func _ready():
 	pick_new_state()
 	if hitbox_shape:
 		hitbox_shape.set_deferred("disabled", true)
+	# --- SPAWN INVINCIBILITY ---
+	is_invincible = true
+	# Enemy is invincible for 1.5 seconds after spawning
+	get_tree().create_timer(1.5).timeout.connect(func(): is_invincible = false)
+	
+	#Initialize health bar
+	if health_bar:
+		health_bar.update_health(health, max_health)
 
 func _physics_process(delta: float):
 	if is_dead: return
@@ -66,7 +78,13 @@ func start_attack():
 		hitbox_shape.set_deferred("disabled", false)
 
 func take_damage(amount: int, attacker_pos: Vector2):
-	if is_dead: return
+	# Exit if already dead or currently invincible 
+	if is_dead or is_invincible: return
+	
+	#Invincible logic 
+	is_invincible = true
+	#start a timer to turn off invincibility after 1 second
+	get_tree().create_timer(1.0).timeout.connect(func(): is_invincible = false)
 	
 	# --- ATTACK CANCEL LOGIC ---
 	is_hurting = true
@@ -79,6 +97,10 @@ func take_damage(amount: int, attacker_pos: Vector2):
 	# ---------------------------
 
 	health -= amount
+	#Update the healthbar visual (which now handles its own visibility)
+	if health_bar:
+		health_bar.update_health(health, max_health)
+	
 	flash_red()
 	apply_knockback(attacker_pos)
 	

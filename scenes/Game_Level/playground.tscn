@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://df4kes8oud1eq" path="res://scenes/Enemy/enemy_spawner.tscn" id="6_btis3"]
 [ext_resource type="PackedScene" uid="uid://bej4uf7ciij02" path="res://scenes/Enemy/goblin.tscn" id="7_iqjt0"]
 [ext_resource type="PackedScene" uid="uid://davoehkntqqo5" path="res://scenes/hud.tscn" id="8_lhrm7"]
+[ext_resource type="PackedScene" uid="uid://bjf5vj7cimr7e" path="res://scenes/game_over_screen.tscn" id="11_meksi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_emj6c"]
 texture = ExtResource("1_btis3")
@@ -3692,3 +3693,6 @@ spawn_marker = NodePath("Marker2D")
 position = Vector2(-93, 61)
 
 [node name="HUD" parent="." unique_id=263629411 instance=ExtResource("8_lhrm7")]
+
+[node name="GameOverScreen" parent="." unique_id=679897617 instance=ExtResource("11_meksi")]
+layer = 100

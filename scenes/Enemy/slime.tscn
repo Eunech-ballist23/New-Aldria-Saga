@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dp47l4frwleej" path="res://assets/Slime mobs/PNG/Slime1/Without_shadow/Slime1_Run_without_shadow.png" id="4_yx3ar"]
 [ext_resource type="PackedScene" uid="uid://butayw5phmbcu" path="res://scenes/slime_damage.tscn" id="5_2npkn"]
 [ext_resource type="Script" uid="uid://bn0gbq4alunl5" path="res://scripts/enemy/slime_hurtbox.gd" id="9_g7ttq"]
+[ext_resource type="PackedScene" uid="uid://bsn5qxnxmjkaj" path="res://scenes/Enemy/enemy_health_bar.tscn" id="10_ts781"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7k5ve"]
 atlas = ExtResource("2_qq2pm")
@@ -1504,6 +1505,12 @@ script = ExtResource("9_g7ttq")
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_231f7")
 debug_color = Color(0.8002919, 0.3527825, 0.5998976, 0.41960785)
+
+[node name="EnemyHealthBar" parent="." unique_id=772551262 groups=["enemies"] instance=ExtResource("10_ts781")]
+offset_left = -16.6
+offset_top = -10.6
+offset_right = 15.4
+offset_bottom = -6.6000004
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
