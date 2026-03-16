@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bfmiyhhw4707t"]
+
+[ext_resource type="Texture2D" uid="uid://ddryeapumbqc5" path="res://assets/Tiny Swords (Free Pack)/Units/Red Units/Monk/Idle.png" id="1_vm2jy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qw0v"]
+atlas = ExtResource("1_vm2jy")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hf7j"]
+atlas = ExtResource("1_vm2jy")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33vu4"]
+atlas = ExtResource("1_vm2jy")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eose"]
+atlas = ExtResource("1_vm2jy")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17yg2"]
+atlas = ExtResource("1_vm2jy")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3n8g"]
+atlas = ExtResource("1_vm2jy")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lbf7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qw0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hf7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33vu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3eose")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17yg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3n8g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gr7mw"]
+radius = 20.024984
+
+[node name="monk" type="CharacterBody2D" unique_id=235668095]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=296739256]
+position = Vector2(-1, 2)
+scale = Vector2(0.8463542, 0.7916667)
+sprite_frames = SubResource("SpriteFrames_lbf7i")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.13442343
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1886178908]
+position = Vector2(2, 10)
+shape = SubResource("CircleShape2D_gr7mw")

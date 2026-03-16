@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://b6haxperqtbmr"]
+
+[ext_resource type="Texture2D" uid="uid://dfq36bftjbc5r" path="res://assets/Tiny Swords (Free Pack)/Units/Black Units/Monk/Idle.png" id="1_ribnb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ct3y"]
+atlas = ExtResource("1_ribnb")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55da2"]
+atlas = ExtResource("1_ribnb")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c2rm"]
+atlas = ExtResource("1_ribnb")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogs1c"]
+atlas = ExtResource("1_ribnb")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aorec"]
+atlas = ExtResource("1_ribnb")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn8ri"]
+atlas = ExtResource("1_ribnb")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w8byq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ct3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55da2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c2rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogs1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aorec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn8ri")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8vkc"]
+radius = 11.7046995
+
+[node name="black_monk" type="CharacterBody2D" unique_id=119453843]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1820536909]
+position = Vector2(-2.000002, -4.0000005)
+scale = Vector2(0.9791668, 0.8854167)
+sprite_frames = SubResource("SpriteFrames_w8byq")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1502365779]
+shape = SubResource("CircleShape2D_x8vkc")

@@ -3696,3 +3696,4 @@ position = Vector2(-93, 61)
 
 [node name="GameOverScreen" parent="." unique_id=679897617 instance=ExtResource("11_meksi")]
 layer = 100
+visible = false

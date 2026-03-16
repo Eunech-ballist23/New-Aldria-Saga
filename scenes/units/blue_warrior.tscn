@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cuibsrotd5bgv"]
+
+[ext_resource type="Texture2D" uid="uid://rf1mv7tgb4gw" path="res://assets/Tiny Swords (Free Pack)/Units/Blue Units/Warrior/Warrior_Idle.png" id="1_1v81i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xypy"]
+atlas = ExtResource("1_1v81i")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfiwp"]
+atlas = ExtResource("1_1v81i")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78kri"]
+atlas = ExtResource("1_1v81i")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln7xg"]
+atlas = ExtResource("1_1v81i")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfrrt"]
+atlas = ExtResource("1_1v81i")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x0y0"]
+atlas = ExtResource("1_1v81i")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpm4x"]
+atlas = ExtResource("1_1v81i")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mpfr"]
+atlas = ExtResource("1_1v81i")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yoep3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xypy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfiwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78kri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln7xg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfrrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x0y0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpm4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mpfr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kr57p"]
+
+[node name="blue_warrior" type="CharacterBody2D" unique_id=1919768190]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=245066319]
+position = Vector2(0.9999995, 1.000001)
+scale = Vector2(0.8125, 0.6979167)
+sprite_frames = SubResource("SpriteFrames_yoep3")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1056575408]
+shape = SubResource("CircleShape2D_kr57p")
