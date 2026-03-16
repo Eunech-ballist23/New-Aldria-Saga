@@ -35,13 +35,16 @@ theme_override_font_sizes/font_size = 51
 text = "Game Over
 "
 
-[node name="Button" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1684966069]
+[node name="Retry" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1684966069]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Retry"
 
-[node name="Button2" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=720949662]
+[node name="ExitGame" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=720949662]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Quit"
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/ExitGame" to="." method="_on_exit_game_pressed"]

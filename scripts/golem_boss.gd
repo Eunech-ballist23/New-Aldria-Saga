@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 # Stats
-@export var max_health: int = 10
-@export var current_health: int = 20
+@export var max_health: int = 2
+@export var current_health: int = 2
 @export var speed: float = 40.0 
 @export var acceleration: float = 200.0
 @export var gravity: float = 0.0 # Top-down/4-way movement
@@ -127,4 +127,4 @@ func _die() -> void:
 	velocity = Vector2.ZERO
 	sprite.play("death")
 	await sprite.animation_finished
-	queue_free()
+	

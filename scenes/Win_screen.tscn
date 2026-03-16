@@ -25,10 +25,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 51
 text = "Level Complete"
 
-[node name="Button" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1101726763]
+[node name="NextLevel" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1101726763]
 layout_mode = 2
 text = "Next Level"
 
-[node name="Button2" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1649763102]
+[node name="ExitGame" type="Button" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1649763102]
 layout_mode = 2
-text = "Quit Game"
+text = "Exit Game"

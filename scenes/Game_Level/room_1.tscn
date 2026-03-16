@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://gt0fp3usi4ct" path="res://Player/player.tscn" id="2_8v41e"]
 [ext_resource type="PackedScene" uid="uid://hcfj55k5wwmq" path="res://scenes/Enemy/golem_boss.tscn" id="3_srn1f"]
 [ext_resource type="PackedScene" uid="uid://davoehkntqqo5" path="res://scenes/hud.tscn" id="4_oguk8"]
+[ext_resource type="PackedScene" uid="uid://bjf5vj7cimr7e" path="res://scenes/game_over_screen.tscn" id="6_ny0a1"]
+[ext_resource type="PackedScene" uid="uid://b1u27j7j4qlic" path="res://scenes/Win_screen.tscn" id="7_ggoc3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vu5en"]
 texture = ExtResource("1_0tsjr")
@@ -671,3 +673,9 @@ position = Vector2(147, 213)
 position = Vector2(676, 406)
 
 [node name="HUD" parent="." unique_id=263629411 instance=ExtResource("4_oguk8")]
+
+[node name="GameOverScreen" parent="." unique_id=679897617 instance=ExtResource("6_ny0a1")]
+visible = false
+
+[node name="CanvasLayer" parent="." unique_id=1060099317 instance=ExtResource("7_ggoc3")]
+visible = false

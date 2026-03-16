@@ -6,7 +6,7 @@ signal health_changed(new_health)
 #signal when a player died
 signal player_died
 
-@export var health = 20
+@export var health = 10
 @export var speed = 90
 @export var knockback_strength = 250.0
 
@@ -97,6 +97,7 @@ func _on_animated_sprite_2d_animation_finished():
 		is_hurting = false
 	elif anim.begins_with("die"):
 		set_physics_process(false)
+		die()
 		
 func die():
 	print("Player has died!")

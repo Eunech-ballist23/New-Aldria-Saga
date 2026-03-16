@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://onxjcm657y0f" path="res://assets/Arcane Stone Golem/Mecha-stone Golem 0.1/weapon PNG/Laser_sheet.png" id="4_q836g"]
 [ext_resource type="Script" uid="uid://diobbdl6rm1oo" path="res://scripts/golem_normal_attack_hit_box.gd" id="6_5l580"]
 [ext_resource type="Script" uid="uid://cb3mtvtv64cmo" path="res://scripts/golem_hurt_box.gd" id="7_y7hf4"]
+[ext_resource type="PackedScene" uid="uid://bqrhmr610hi3p" path="res://scenes/Enemy/golem_boss_health_bar.tscn" id="8_y7hf4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4bf6e"]
 atlas = ExtResource("1_yysmy")
@@ -345,7 +346,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8r38o")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -554,6 +555,7 @@ radius = 27.663153
 [sub_resource type="CircleShape2D" id="CircleShape2D_udy84"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0sgok"]
+radius = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5l580"]
 radius = 95.35198
@@ -564,7 +566,7 @@ script = ExtResource("1_udy84")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=135723094]
 sprite_frames = SubResource("SpriteFrames_brhbx")
-animation = &"walk"
+animation = &"death"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=538681035]
@@ -582,17 +584,26 @@ disabled = true
 debug_color = Color(0.24797088, 0.58585465, 0.68227637, 0.41960785)
 
 [node name="GolemHurtBox" type="Area2D" parent="." unique_id=1229616864]
+collision_layer = 128
 script = ExtResource("7_y7hf4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GolemHurtBox" unique_id=133653175]
 shape = SubResource("CircleShape2D_0sgok")
+debug_color = Color(0.83676505, 0.30148888, 0.6239188, 0.41960785)
 
 [node name="area_detection" type="Area2D" parent="." unique_id=1146517463 groups=["bosses"]]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_detection" unique_id=875161315]
 shape = SubResource("CircleShape2D_5l580")
 debug_color = Color(0.41216564, 0.5051829, 0.8830176, 0.41960785)
+
+[node name="GolemBossHealthBar" parent="." unique_id=1488171478 instance=ExtResource("8_y7hf4")]
+offset_left = -100.0
+offset_top = -36.0
+offset_right = 140.0
+offset_bottom = -29.0
 
 [connection signal="area_entered" from="GolemNormalAttack_HitBox" to="GolemNormalAttack_HitBox" method="_on_area_entered"]
