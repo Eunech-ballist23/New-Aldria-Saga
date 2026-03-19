@@ -5,6 +5,10 @@ extends Node2D
 @onready var game_over_ui = $GameOverScreen
 
 func _ready() -> void:
+	# Set the Camera Limits for the Playground (Large Map)
+	if player:
+		# Format: (left, top, right, bottom)
+		player.set_camera_limits(-400, -71, 900, 920)
 	# 1. Connect the Death Signal
 	if has_node("Player"):
 		# REMOVED the () from the end of the function name

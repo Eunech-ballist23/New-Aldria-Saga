@@ -562,6 +562,7 @@ radius = 95.35198
 
 [node name="GolemBoss" type="CharacterBody2D" unique_id=327508688]
 z_index = 5
+scale = Vector2(3, 3)
 script = ExtResource("1_udy84")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=135723094]
@@ -592,7 +593,6 @@ shape = SubResource("CircleShape2D_0sgok")
 debug_color = Color(0.83676505, 0.30148888, 0.6239188, 0.41960785)
 
 [node name="area_detection" type="Area2D" parent="." unique_id=1146517463 groups=["bosses"]]
-visible = false
 collision_layer = 2
 collision_mask = 2
 

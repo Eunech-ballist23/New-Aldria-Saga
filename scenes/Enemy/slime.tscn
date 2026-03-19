@@ -1471,10 +1471,8 @@ hitbox_shape = NodePath("slime_damage/CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1682472739]
 sprite_frames = SubResource("SpriteFrames_aq06o")
-animation = &"attack_down"
+animation = &"walk_down"
 autoplay = "idle_down"
-frame = 6
-frame_progress = 0.5184244
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=392007013]
 position = Vector2(1, 0)

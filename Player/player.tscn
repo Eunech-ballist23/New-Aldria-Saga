@@ -1383,10 +1383,6 @@ autoplay = "idle_down"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1723390807]
 position = Vector2(-2, -10)
 zoom = Vector2(2, 2)
-limit_left = -400
-limit_top = -71
-limit_right = 900
-limit_bottom = 920
 limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true

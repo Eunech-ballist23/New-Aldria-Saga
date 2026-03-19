@@ -50,6 +50,12 @@ func _physics_process(delta):
 		start_attack()
 
 	move_and_slide()
+	
+func set_camera_limits(left: int, top: int, right: int, bottom: int):
+	$Camera2D.limit_left = left
+	$Camera2D.limit_top = top
+	$Camera2D.limit_right = right
+	$Camera2D.limit_bottom = bottom
 
 func get_direction_name(dir: Vector2) -> String:
 	if abs(dir.x) > abs(dir.y):

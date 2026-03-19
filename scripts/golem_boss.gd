@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal boss_died # manual script signal that caan be used on win screen when it return death animation
+
 # Stats
 @export var max_health: int = 2
 @export var current_health: int = 2
@@ -125,6 +127,9 @@ func take_damage(amount: int, _pos: Vector2):
 func _die() -> void:
 	current_state = State.DEATH
 	velocity = Vector2.ZERO
+	# Emit the signal so room_1.gd knows the boss is dead
+	boss_died.emit()
+	
 	sprite.play("death")
 	await sprite.animation_finished
-	
+	sprite.stop()
