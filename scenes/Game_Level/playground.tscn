@@ -3676,6 +3676,16 @@ z_index = 2
 position = Vector2(-53, 91)
 collision_layer = 3
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1223262997]
+zoom = Vector2(2, 2)
+limit_left = -470
+limit_top = -102
+limit_right = 908
+limit_bottom = 954
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+editor_draw_limits = true
+
 [node name="Enemy-Spawner" type="Node" parent="." unique_id=940620012]
 
 [node name="Slime" parent="Enemy-Spawner" unique_id=883132796 node_paths=PackedStringArray("spawn_marker") instance=ExtResource("6_btis3")]

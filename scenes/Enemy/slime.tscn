@@ -1242,7 +1242,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lt8fq")
 }],
-"loop": true,
+"loop": false,
 "name": &"run_down",
 "speed": 5.0
 }, {
@@ -1271,7 +1271,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6gupw")
 }],
-"loop": true,
+"loop": false,
 "name": &"run_left",
 "speed": 5.0
 }, {
@@ -1300,7 +1300,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hv6qh")
 }],
-"loop": true,
+"loop": false,
 "name": &"run_right",
 "speed": 5.0
 }, {
@@ -1329,7 +1329,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bmis0")
 }],
-"loop": true,
+"loop": false,
 "name": &"run_up",
 "speed": 5.0
 }, {
@@ -1358,7 +1358,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iscye")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk_down",
 "speed": 6.0
 }, {
@@ -1387,7 +1387,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0yeyc")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk_left",
 "speed": 6.0
 }, {
@@ -1416,7 +1416,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mfrqf")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk_right",
 "speed": 6.0
 }, {
@@ -1445,7 +1445,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lapfp")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk_up",
 "speed": 5.0
 }]
@@ -1471,7 +1471,7 @@ hitbox_shape = NodePath("slime_damage/CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1682472739]
 sprite_frames = SubResource("SpriteFrames_aq06o")
-animation = &"walk_down"
+animation = &"idle_up"
 autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=392007013]

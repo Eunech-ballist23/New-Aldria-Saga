@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://7x7n6utisj4h"]
 
+[ext_resource type="Script" uid="uid://01ijoxbo1lgx" path="res://scripts/skeleton_king.gd" id="1_0suaj"]
 [ext_resource type="Texture2D" uid="uid://cyce1xp03b841" path="res://assets/skeletonKing/Foozle_2DC0021_Lucifer_Skeleton_King_Pixel_Art/Down/Png/SkeletonKingDownAttack01.png" id="1_3evt2"]
 [ext_resource type="Texture2D" uid="uid://b2yujh04j2ja5" path="res://assets/skeletonKing/Foozle_2DC0021_Lucifer_Skeleton_King_Pixel_Art/Down/Png/SkeletonKingDownAttack02.png" id="2_0suaj"]
 [ext_resource type="Texture2D" uid="uid://b85ayjesdiyp3" path="res://assets/skeletonKing/Foozle_2DC0021_Lucifer_Skeleton_King_Pixel_Art/Down/Png/SkeletonKingDownAttack03.png" id="3_no5a0"]
@@ -1927,15 +1928,15 @@ radius = 30.016663
 radius = 18.439089
 
 [node name="SkeletonKing" type="CharacterBody2D" unique_id=2142331845]
+script = ExtResource("1_0suaj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=213455101]
 shape = SubResource("CapsuleShape2D_auu67")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=17217547]
+position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_esb67")
-animation = &"attack_up"
-frame = 9
-frame_progress = 1.0
+animation = &"attack_down_3"
 
 [node name="detectio_area" type="Area2D" parent="." unique_id=1351829723]
 

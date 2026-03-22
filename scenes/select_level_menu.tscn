@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://di0ih3qlpqe6h"]
+
+[ext_resource type="Script" uid="uid://yd783jxvpcpi" path="res://scripts/select_level_menu.gd" id="1_0n2r7"]
+
+[node name="SelectLevelMenu" type="Control" unique_id=1499500024]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0n2r7")
+
+[node name="Background" type="TextureRect" parent="." unique_id=437834660]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level1" type="Button" parent="." unique_id=808686856]
+layout_mode = 0
+offset_left = 282.0
+offset_top = 361.0
+offset_right = 664.0
+offset_bottom = 824.0
+
+[node name="Level2" type="Button" parent="." unique_id=2138735603]
+layout_mode = 0
+offset_left = 794.0
+offset_top = 361.0
+offset_right = 1176.0
+offset_bottom = 824.0
+
+[node name="Button3" type="Button" parent="." unique_id=87837861]
+layout_mode = 0
+offset_left = 1284.0
+offset_top = 361.0
+offset_right = 1666.0
+offset_bottom = 824.0

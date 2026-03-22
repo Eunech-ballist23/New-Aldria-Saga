@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dwqsff76vrewp"]
 
+[ext_resource type="Script" uid="uid://b1a7poobc1hin" path="res://scripts/commander_goblin.gd" id="1_dkswo"]
 [ext_resource type="Texture2D" uid="uid://c1wo36kmv5fja" path="res://assets/Orc mobs/PNG/Orc3/Without_shadow/orc3_attack_without_shadow.png" id="1_ojk6i"]
 [ext_resource type="Texture2D" uid="uid://b8wox8ahpb5o8" path="res://assets/Orc mobs/PNG/Orc3/Without_shadow/orc3_run_attack_without_shadow.png" id="2_dkswo"]
 [ext_resource type="Texture2D" uid="uid://cfwk7xokqcu62" path="res://assets/Orc mobs/PNG/Orc3/Without_shadow/orc3_death_without_shadow.png" id="3_sfqnd"]
@@ -1500,6 +1501,7 @@ radius = 19.0
 radius = 22.0
 
 [node name="CommanderGoblin" type="CharacterBody2D" unique_id=1734544476]
+script = ExtResource("1_dkswo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=589288152]
 sprite_frames = SubResource("SpriteFrames_qa510")

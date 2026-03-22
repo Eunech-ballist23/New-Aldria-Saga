@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://1vgcs5rmoltr"]
 
+[ext_resource type="Texture2D" uid="uid://cehpk6nqfoi7g" path="res://assets/skeletonSpectre/Foozle_2DC0020_Lucifer_Skeleton_Ancient_Pixel_Art/Down/Png/AncientSkeletonDownAttack01.png" id="1_ehf1t"]
+[ext_resource type="Script" uid="uid://cqbrxtnqkux6k" path="res://scripts/wraith.gd" id="1_enyh4"]
 [ext_resource type="Texture2D" uid="uid://crr2kmeselaan" path="res://assets/skeletonSpectre/Foozle_2DC0020_Lucifer_Skeleton_Ancient_Pixel_Art/Down/Png/AncientSkeletonDownAttack02.png" id="1_pgx5m"]
 [ext_resource type="Texture2D" uid="uid://btmxho6cgded7" path="res://assets/skeletonSpectre/Foozle_2DC0020_Lucifer_Skeleton_Ancient_Pixel_Art/Down/Png/AncientSkeletonDownAttack03.png" id="2_ehf1t"]
 [ext_resource type="Texture2D" uid="uid://dcc7yhyw0xyds" path="res://assets/skeletonSpectre/Foozle_2DC0020_Lucifer_Skeleton_Ancient_Pixel_Art/Left/Png/AncientSkeletonLeftAttack01.png" id="3_enyh4"]
@@ -27,6 +29,34 @@
 [ext_resource type="Texture2D" uid="uid://crrubq14xkq6p" path="res://assets/skeletonSpectre/Foozle_2DC0020_Lucifer_Skeleton_Ancient_Pixel_Art/Left/Png/AncientSkeletonLeftWalk.png" id="25_043tq"]
 [ext_resource type="Texture2D" uid="uid://c2a7qg5uetu37" path="res://assets/skeletonSpectre/Foozle_2DC0020_Lucifer_Skeleton_Ancient_Pixel_Art/Right/Png/AncientSkeletonRightWalk.png" id="26_05nac"]
 [ext_resource type="Texture2D" uid="uid://duxses8wki1xf" path="res://assets/skeletonSpectre/Foozle_2DC0020_Lucifer_Skeleton_Ancient_Pixel_Art/Up/Png/AncientSkeletonUpWalk.png" id="27_3ge30"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enyh4"]
+atlas = ExtResource("1_ehf1t")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdbt6"]
+atlas = ExtResource("1_ehf1t")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atfgb"]
+atlas = ExtResource("1_ehf1t")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rjs6"]
+atlas = ExtResource("1_ehf1t")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jn7m"]
+atlas = ExtResource("1_ehf1t")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r61hu"]
+atlas = ExtResource("1_ehf1t")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqyp5"]
+atlas = ExtResource("1_ehf1t")
+region = Rect2(480, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cdfmk"]
 atlas = ExtResource("1_pgx5m")
@@ -878,8 +908,29 @@ region = Rect2(560, 0, 80, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ygx2a"]
 animations = [{
-"frames": [],
-"loop": false,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enyh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdbt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atfgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rjs6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jn7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r61hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqyp5")
+}],
+"loop": true,
 "name": &"attack_down",
 "speed": 5.0
 }, {
@@ -1669,11 +1720,14 @@ radius = 26.019224
 radius = 64.62198
 
 [node name="Wraith" type="CharacterBody2D" unique_id=1841805827]
+script = ExtResource("1_enyh4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1179130773]
 sprite_frames = SubResource("SpriteFrames_ygx2a")
-animation = &"walk_up"
+animation = &"attack_left_2"
 autoplay = "idle_down"
+frame = 12
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109940929]
 position = Vector2(1, -4)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bmq52f71g4u6n"]
 
 [ext_resource type="Script" uid="uid://cp6kkyg6u277h" path="res://scripts/main_menu.gd" id="1_rns2u"]
-[ext_resource type="Texture2D" uid="uid://dijetqpniw4q6" path="res://assets/Game menu designs/download (1).png" id="1_yubou"]
+[ext_resource type="Texture2D" uid="uid://dijetqpniw4q6" path="res://assets/GameUIDesign/download (1).png" id="1_yubou"]
 
 [sub_resource type="SystemFont" id="SystemFont_yubou"]
 font_names = PackedStringArray("Comic Sans MS")

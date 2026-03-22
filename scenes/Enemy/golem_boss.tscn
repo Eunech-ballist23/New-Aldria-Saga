@@ -562,7 +562,6 @@ radius = 95.35198
 
 [node name="GolemBoss" type="CharacterBody2D" unique_id=327508688]
 z_index = 5
-scale = Vector2(3, 3)
 script = ExtResource("1_udy84")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=135723094]

@@ -7,23 +7,6 @@ extends Node2D
 @onready var victory_sound = $VictorySound 
 
 func _ready() -> void:
-	# 1. Get the TileMap (Ensure this name matches your Scene Dock exactly!)
-	var tilemap = $TileMapLayer 
-	
-	if tilemap:
-		var map_rect = tilemap.get_used_rect()
-		var cell_size = tilemap.tile_set.tile_size
-		
-		# Correct math: position is the top-left, end is the bottom-right
-		var left = map_rect.position.x * cell_size.x
-		var top = map_rect.position.y * cell_size.y
-		var right = map_rect.end.x * cell_size.x
-		var bottom = map_rect.end.y * cell_size.y
-		
-		if player:
-			player.set_camera_limits(left, top, right, bottom)
-	else:
-		print("Error: TileMapLayer node not found! Check the name in the Scene Dock.")
 	
 	
 	# 1. Connect the Death Signal

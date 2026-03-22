@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d0ojbboe7ljg8"]
 
 [ext_resource type="Texture2D" uid="uid://bh3uayqnu5dnu" path="res://assets/Slime mobs/PNG/Slime3/Without_shadow/Slime3_Death_without_shadow.png" id="1_k2xhf"]
+[ext_resource type="Script" uid="uid://dj2ha8bihtc20" path="res://scripts/magma_slime.gd" id="1_qyo0j"]
 [ext_resource type="Texture2D" uid="uid://db4b661ltvv21" path="res://assets/Slime mobs/PNG/Slime3/Without_shadow/Slime3_Hurt_without_shadow.png" id="2_qyo0j"]
 [ext_resource type="Texture2D" uid="uid://bidrak18og53t" path="res://assets/Slime mobs/PNG/Slime3/Without_shadow/Slime3_Idle_without_shadow.png" id="3_bgagt"]
 [ext_resource type="Texture2D" uid="uid://dbchudxvmovri" path="res://assets/Slime mobs/PNG/Slime3/Without_shadow/Slime3_Run_without_shadow.png" id="4_jw0ju"]
@@ -1177,6 +1178,7 @@ radius = 13.0
 radius = 47.042534
 
 [node name="MagmaSlime" type="CharacterBody2D" unique_id=236446630]
+script = ExtResource("1_qyo0j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=8165598]
 sprite_frames = SubResource("SpriteFrames_ksmu1")
