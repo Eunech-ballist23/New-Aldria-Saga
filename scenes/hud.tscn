@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://davoehkntqqo5"]
 
 [ext_resource type="Script" uid="uid://1ljqv7srdbc5" path="res://scripts/health_bar.gd" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://c0lvwo8abe6n3" path="res://scripts/hud.gd" id="1_oo0fn"]
+[ext_resource type="Script" uid="uid://bgtn53m6ugjyo" path="res://scripts/skill_slot.gd" id="2_5ysmq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_toqtt"]
 font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ysmq"]
+bg_color = Color(0.21950099, 0.21950105, 0.21950087, 1)
+corner_detail = 4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_toqtt"]
 
@@ -29,6 +35,7 @@ corner_radius_top_left = 2
 corner_radius_bottom_left = 2
 
 [node name="HUD" type="CanvasLayer" unique_id=263629411]
+script = ExtResource("1_oo0fn")
 
 [node name="MainUI" type="Control" parent="." unique_id=1680754986]
 layout_mode = 3
@@ -54,6 +61,100 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 15
 text = "Health"
 label_settings = SubResource("LabelSettings_toqtt")
+
+[node name="Bottom_center" type="MarginContainer" parent="MainUI" unique_id=1994737202]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="skill_bar" type="HBoxContainer" parent="MainUI/Bottom_center" unique_id=660104051]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Skill1" type="PanelContainer" parent="MainUI/Bottom_center/skill_bar" unique_id=354467919]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ysmq")
+script = ExtResource("2_5ysmq")
+
+[node name="TextureRect" type="TextureRect" parent="MainUI/Bottom_center/skill_bar/Skill1" unique_id=1472400951]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 3
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MainUI/Bottom_center/skill_bar/Skill1" unique_id=1385968219]
+layout_mode = 2
+value = 5.0
+fill_mode = 4
+tint_progress = Color(0.20392157, 0.20392157, 0.20392157, 1)
+
+[node name="Label" type="Label" parent="MainUI/Bottom_center/skill_bar/Skill1" unique_id=1932354799]
+layout_mode = 2
+text = "Q
+"
+
+[node name="Timer" type="Timer" parent="MainUI/Bottom_center/skill_bar/Skill1" unique_id=923779784]
+one_shot = true
+
+[node name="Skill2" type="PanelContainer" parent="MainUI/Bottom_center/skill_bar" unique_id=606465143]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ysmq")
+script = ExtResource("2_5ysmq")
+
+[node name="TextureRect" type="TextureRect" parent="MainUI/Bottom_center/skill_bar/Skill2" unique_id=1059976079]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 3
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MainUI/Bottom_center/skill_bar/Skill2" unique_id=284471335]
+layout_mode = 2
+value = 5.0
+fill_mode = 4
+tint_progress = Color(0.2, 0.2, 0.2, 1)
+
+[node name="Label" type="Label" parent="MainUI/Bottom_center/skill_bar/Skill2" unique_id=1903869432]
+layout_mode = 2
+text = "E
+"
+
+[node name="Timer" type="Timer" parent="MainUI/Bottom_center/skill_bar/Skill2" unique_id=1009197081]
+one_shot = true
+
+[node name="Skill3" type="PanelContainer" parent="MainUI/Bottom_center/skill_bar" unique_id=1168991634]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ysmq")
+script = ExtResource("2_5ysmq")
+
+[node name="TextureRect" type="TextureRect" parent="MainUI/Bottom_center/skill_bar/Skill3" unique_id=1919582124]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 3
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MainUI/Bottom_center/skill_bar/Skill3" unique_id=610363852]
+layout_mode = 2
+value = 5.0
+fill_mode = 4
+tint_progress = Color(0.2, 0.2, 0.2, 1)
+
+[node name="Label" type="Label" parent="MainUI/Bottom_center/skill_bar/Skill3" unique_id=1561404076]
+layout_mode = 2
+text = "R
+"
+
+[node name="Timer" type="Timer" parent="MainUI/Bottom_center/skill_bar/Skill3" unique_id=937202324]
+one_shot = true
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1723254248]
 z_index = 1
