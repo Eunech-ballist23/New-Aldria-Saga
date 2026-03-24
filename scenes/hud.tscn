@@ -158,9 +158,9 @@ one_shot = true
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1723254248]
 z_index = 1
-offset_left = 69.0
-offset_top = 12.0
-offset_right = 309.0
+offset_left = 71.0
+offset_top = 8.0
+offset_right = 253.0
 offset_bottom = 22.0
 size_flags_horizontal = 8
 size_flags_vertical = 4

@@ -4,7 +4,7 @@ extends ProgressBar
 @onready var timer = $Timer #
 
 func _ready() -> void:
-	max_value = 20 #
+	max_value = 10 #
 	damage_bar.max_value = 20 #
 	# Only use this if you disconnected it from the Editor
 	timer.timeout.connect(_on_timer_timeout) #
