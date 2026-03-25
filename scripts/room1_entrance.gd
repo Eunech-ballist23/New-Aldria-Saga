@@ -11,6 +11,7 @@ func _on_body_entered(body):
 			return
 			
 		if FileAccess.file_exists(target_level_path):
+			AudioController.portalSF()
 			# Change to the level you selected in the Inspector
 			get_tree().call_deferred("change_scene_to_file", target_level_path)
 		else:

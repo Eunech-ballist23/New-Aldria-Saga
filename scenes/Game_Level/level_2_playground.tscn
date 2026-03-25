@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://d0ypvwxwetj26" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/Tower_Desert_RedStone_1.png" id="19_xkce0"]
 [ext_resource type="PackedScene" uid="uid://df4kes8oud1eq" path="res://scenes/Enemy/enemy_spawner.tscn" id="23_mxvld"]
 [ext_resource type="PackedScene" uid="uid://ejq0c2d7oie8" path="res://scenes/Enemy/elite_goblin.tscn" id="24_t6hgj"]
-[ext_resource type="PackedScene" uid="uid://cc6wnbwkq22kn" path="res://scenes/Enemy/decay_slime.tscn" id="25_5hdc5"]
+[ext_resource type="PackedScene" uid="uid://cc6wnbwkq22kn" path="res://scenes/Enemy/Decay_slime.tscn" id="25_5hdc5"]
 [ext_resource type="PackedScene" uid="uid://djbo0cg7sb6tp" path="res://scenes/Enemy/predatory_plant3.tscn" id="26_382lo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ty1ij"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cp3x0eqnpv3m4"
+path="res://.godot/imported/Retro Explosion Short 01.wav-36f5c33679c4bc9ea0c42c45e56a5977.sample"
+
+[deps]
+
+source_file="res://assets/SFX/GameSFX/Explosion/Retro Explosion Short 01.wav"
+dest_files=["res://.godot/imported/Retro Explosion Short 01.wav-36f5c33679c4bc9ea0c42c45e56a5977.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

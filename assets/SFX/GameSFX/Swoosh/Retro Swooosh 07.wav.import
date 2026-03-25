@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bm4ccga63ojl0"
+path="res://.godot/imported/Retro Swooosh 07.wav-cd3de5bd47a2cf2afe35b14d730a855f.sample"
+
+[deps]
+
+source_file="res://assets/SFX/GameSFX/Swoosh/Retro Swooosh 07.wav"
+dest_files=["res://.godot/imported/Retro Swooosh 07.wav-cd3de5bd47a2cf2afe35b14d730a855f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

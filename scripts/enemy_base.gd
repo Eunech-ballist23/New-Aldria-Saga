@@ -62,6 +62,8 @@ func _physics_process(delta: float):
 func take_damage(amount: int, attacker_pos: Vector2, effect: String = "none"):
 	if is_dead or is_invincible: return
 	
+	AudioController.mobTakeDamage()
+	
 	if effect == "slow":
 		apply_slow_effect(2.5)
 	
@@ -90,6 +92,7 @@ func take_damage(amount: int, attacker_pos: Vector2, effect: String = "none"):
 	if health <= 0:
 		is_dead = true
 		sprite.play("death_" + dir_name)
+		AudioController.mobDeadSF()
 	else:
 		sprite.play("hurt_" + dir_name)
 
@@ -110,10 +113,10 @@ func apply_knockback(from_pos: Vector2, multiplier: float = 1.0):
 	knockback_velocity = from_pos.direction_to(global_position) * strength
 
 func flash_red():
-	if is_slowed: return
+	var restore_color = Color(0.5, 0.5, 1.0) if is_slowed else Color(1, 1, 1)
 	sprite.modulate = Color(10, 1, 1)
 	var tween = get_tree().create_tween()
-	tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.2)
+	tween.tween_property(sprite, "modulate", restore_color, 0.2)
 
 func spawn_loot():
 	if loot_item:

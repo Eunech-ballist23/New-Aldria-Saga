@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bit7gmel30ji8"
+path="res://.godot/imported/Sword Slash - QuickSounds.com.mp3-c760e64423b8099125d3eb884db6b64b.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/Sword Slash - QuickSounds.com.mp3"
+dest_files=["res://.godot/imported/Sword Slash - QuickSounds.com.mp3-c760e64423b8099125d3eb884db6b64b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
