@@ -63,6 +63,8 @@ func _physics_process(delta: float):
 func take_damage(amount: int, attacker_pos: Vector2, effect: String = "none"):
 	if is_dead or is_invincible: return
 	
+	AudioController.mobTakeDamage()
+	
 	if effect == "slow":
 		apply_slow_effect(2.5)
 	
@@ -91,6 +93,7 @@ func take_damage(amount: int, attacker_pos: Vector2, effect: String = "none"):
 	if health <= 0:
 		is_dead = true
 		sprite.play("death_" + dir_name)
+		AudioController.mobDeadSF()
 	else:
 		sprite.play("hurt_" + dir_name)
 

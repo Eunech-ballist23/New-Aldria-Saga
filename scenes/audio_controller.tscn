@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://c4jafc7144wkm"]
+
+[ext_resource type="Script" uid="uid://di2d0pdreyjr3" path="res://scripts/audio_controller.gd" id="1_5dt40"]
+[ext_resource type="AudioStream" uid="uid://dqv6o0oun5fah" path="res://assets/SFX/slash1.mp3" id="2_cedxo"]
+[ext_resource type="AudioStream" uid="uid://dvpah61rw4ri8" path="res://assets/SFX/flesh-take-damage.mp3" id="3_cedxo"]
+[ext_resource type="AudioStream" uid="uid://c5hn3y4ue8qmb" path="res://assets/SFX/death2.mp3" id="4_6fhfa"]
+[ext_resource type="AudioStream" uid="uid://bfu8prdfukkr0" path="res://assets/SFX/step-run.mp3" id="4_my8s2"]
+[ext_resource type="AudioStream" uid="uid://c11d8m478fl4h" path="res://assets/SFX/fireball.mp3" id="4_nf7h6"]
+[ext_resource type="AudioStream" uid="uid://ds5hnkova1fp" path="res://assets/SFX/water.mp3" id="4_vj1x0"]
+[ext_resource type="AudioStream" uid="uid://t7qrh5wynwi5" path="res://assets/SFX/portalSF.mp3" id="5_2e0id"]
+[ext_resource type="AudioStream" uid="uid://bkmv06v0yoy74" path="res://assets/SFX/wind.mp3" id="6_my8s2"]
+
+[node name="audio_controller" type="Node2D" unique_id=85073510]
+script = ExtResource("1_5dt40")
+
+[node name="slash" type="AudioStreamPlayer" parent="." unique_id=861559545]
+stream = ExtResource("2_cedxo")
+volume_db = -16.254
+pitch_scale = 1.18
+
+[node name="take_damage" type="AudioStreamPlayer" parent="." unique_id=1985693205]
+stream = ExtResource("3_cedxo")
+volume_db = -12.718
+
+[node name="run" type="AudioStreamPlayer" parent="." unique_id=200267089]
+stream = ExtResource("4_my8s2")
+volume_db = -25.829
+
+[node name="portalSF" type="AudioStreamPlayer" parent="." unique_id=1245689980]
+stream = ExtResource("5_2e0id")
+
+[node name="FishinishLevelMusic" type="AudioStreamPlayer" parent="." unique_id=1182895741]
+
+[node name="nextLevelMusic" type="AudioStreamPlayer" parent="." unique_id=500018355]
+
+[node name="deadMusic" type="AudioStreamPlayer" parent="." unique_id=452396327]
+
+[node name="SlimeAttackSF" type="AudioStreamPlayer" parent="." unique_id=628044644]
+
+[node name="SlimeDiedSF" type="AudioStreamPlayer" parent="." unique_id=1911834970]
+
+[node name="GoblinAttackSF" type="AudioStreamPlayer" parent="." unique_id=1147519791]
+
+[node name="goblinTakeDamageSF" type="AudioStreamPlayer" parent="." unique_id=1326552330]
+stream = ExtResource("3_cedxo")
+volume_db = -8.456
+pitch_scale = 1.7
+
+[node name="GoblinDiedSF" type="AudioStreamPlayer" parent="." unique_id=1212753499]
+
+[node name="bossFightAreaMusic" type="AudioStreamPlayer" parent="." unique_id=1457498784]
+
+[node name="BossAttackSF" type="AudioStreamPlayer" parent="." unique_id=1243153759]
+
+[node name="BossDiedSF" type="AudioStreamPlayer" parent="." unique_id=738238116]
+
+[node name="level2BG" type="AudioStreamPlayer" parent="." unique_id=612478170]
+
+[node name="firebalSkilllSF" type="AudioStreamPlayer" parent="." unique_id=37032783]
+stream = ExtResource("4_nf7h6")
+volume_db = -21.138
+pitch_scale = 0.84
+
+[node name="waterSkillSF" type="AudioStreamPlayer" parent="." unique_id=1895364728]
+stream = ExtResource("4_vj1x0")
+volume_db = -18.601
+pitch_scale = 1.16
+
+[node name="windSkillSF" type="AudioStreamPlayer" parent="." unique_id=53394206]
+stream = ExtResource("6_my8s2")
+volume_db = -21.984
+
+[node name="playerDeadSF" type="AudioStreamPlayer" parent="." unique_id=507350201]
+stream = ExtResource("4_6fhfa")
+volume_db = -0.156
+pitch_scale = 1.9
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=388759228]
+
+[node name="predator_plants_death" type="AudioStreamPlayer" parent="." unique_id=1966361280]
+
+[node name="predator_plants_attack" type="AudioStreamPlayer" parent="." unique_id=2013492413]

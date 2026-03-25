@@ -5,20 +5,17 @@
 [ext_resource type="Texture2D" uid="uid://xoulq8yks0vm" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Rocks/Atlas/Rocks_Desert.png" id="3_0j8dr"]
 [ext_resource type="Texture2D" uid="uid://bb0knxleao330" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Ground Tileset/Tileset_Ground.png" id="4_6g0nk"]
 [ext_resource type="PackedScene" uid="uid://gt0fp3usi4ct" path="res://Player/player.tscn" id="4_eufck"]
-<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://b15jyu35p50d" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Ground Tileset/Tileset_Road.png" id="5_mxvld"]
 [ext_resource type="Texture2D" uid="uid://fcm6e58ovqex" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Tiled/Tilemaps/Hidden Oasis.png" id="6_t6hgj"]
 [ext_resource type="Texture2D" uid="uid://dytw6o4qt85mi" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/House_Desert_RedStone_1.png" id="7_7g2ed"]
 [ext_resource type="Texture2D" uid="uid://x58brqs2syj5" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/House_Desert_RedStone_2.png" id="8_5hdc5"]
 [ext_resource type="Texture2D" uid="uid://co22m4yb0ou0k" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/WatchTower_Desert_Stone_1.png" id="9_382lo"]
 [ext_resource type="Texture2D" uid="uid://crm2dnqh4wmp8" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/Well_Desert_Stone.png" id="10_m4i76"]
-=======
 [ext_resource type="Texture2D" uid="uid://qpidotvub3vc" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Trees and Bushes/Atlas/Trees_Bushes_Desert.png" id="4_x7rgu"]
 [ext_resource type="Texture2D" uid="uid://bar8gjuh3jrlh" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/Atlas/Buildings_Desert.png" id="5_uosf2"]
 [ext_resource type="Texture2D" uid="uid://0ec16a1l41v3" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/Atlas/Building_Props_Desert.png" id="6_s5q1d"]
 [ext_resource type="Texture2D" uid="uid://cmofjt08hsjfe" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Props/Atlas/Props_Desert.png" id="7_36dl0"]
 [ext_resource type="PackedScene" uid="uid://dhcxoonq88kc6" path="res://scenes/room_1_entrance.tscn" id="9_s5q1d"]
->>>>>>> 122a384 (updated skill logic, player attacks and coin pickup)
 [ext_resource type="PackedScene" uid="uid://davoehkntqqo5" path="res://scenes/hud.tscn" id="10_uosf2"]
 [ext_resource type="Texture2D" uid="uid://bv8xsa162y0fl" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/Well_Stone.png" id="11_ji6fi"]
 [ext_resource type="PackedScene" uid="uid://bjf5vj7cimr7e" path="res://scenes/game_over_screen.tscn" id="11_s5q1d"]
@@ -29,8 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://b3o6v2yvsgi08" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/House_Desert_RedStone_7.png" id="16_pxdbo"]
 [ext_resource type="Texture2D" uid="uid://b756sw2vrbq3n" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/MarketStand_Large_5.png" id="17_03wdq"]
 [ext_resource type="Texture2D" uid="uid://bthjlbp2670ej" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/MarketStand_Small_5.png" id="18_di13x"]
-[ext_resource type="Texture2D" uid="uid://d0ypvwxwetj26" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/Tower_Desert_RedStone_1.png" id="19_xkce0"]
-
+[ext_resource type="Texture2D" uid="uid://d0ypvwxwetj26" path="
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ty1ij"]
 texture = ExtResource("3_0j8dr")
 14:0/0 = 0

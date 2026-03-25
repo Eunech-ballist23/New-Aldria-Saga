@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cacmnj8q23myg"
+path="res://.godot/imported/Retro Charge Off StereoUP 02.wav-cba30ec9e335afcf0799b2af8475951f.sample"
+
+[deps]
+
+source_file="res://assets/SFX/GameSFX/Charge/Retro Charge Off StereoUP 02.wav"
+dest_files=["res://.godot/imported/Retro Charge Off StereoUP 02.wav-cba30ec9e335afcf0799b2af8475951f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

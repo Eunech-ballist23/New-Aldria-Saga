@@ -603,6 +603,7 @@ debug_color = Color(0.41216564, 0.5051829, 0.8830176, 0.41960785)
 offset_left = -100.0
 offset_top = -36.0
 offset_right = 140.0
-offset_bottom = -29.0
+offset_bottom = -28.0
+value = 100.0
 
 [connection signal="area_entered" from="GolemNormalAttack_HitBox" to="GolemNormalAttack_HitBox" method="_on_area_entered"]

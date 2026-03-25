@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bej4uf7ciij02" path="res://scenes/Enemy/goblin.tscn" id="7_iqjt0"]
 [ext_resource type="PackedScene" uid="uid://davoehkntqqo5" path="res://scenes/hud.tscn" id="8_lhrm7"]
 [ext_resource type="PackedScene" uid="uid://bjf5vj7cimr7e" path="res://scenes/game_over_screen.tscn" id="11_meksi"]
+[ext_resource type="AudioStream" uid="uid://dmhldq7rnxofk" path="res://assets/SFX/level1BGM.mp3" id="12_y4gy7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_emj6c"]
 texture = ExtResource("1_btis3")
@@ -3679,6 +3680,7 @@ collision_layer = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1223262997]
 zoom = Vector2(2, 2)
+limit_enabled = false
 limit_left = -470
 limit_top = -102
 limit_right = 908
@@ -3708,3 +3710,8 @@ position = Vector2(-93, 61)
 [node name="GameOverScreen" parent="." unique_id=679897617 instance=ExtResource("11_meksi")]
 layer = 100
 visible = false
+
+[node name="backgroundmusic" type="AudioStreamPlayer" parent="." unique_id=30078573]
+stream = ExtResource("12_y4gy7")
+volume_db = -20.293
+autoplay = true

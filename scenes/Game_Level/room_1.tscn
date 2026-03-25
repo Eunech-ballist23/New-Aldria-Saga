@@ -838,6 +838,8 @@ editor_draw_limits = true
 
 [node name="GolemBoss" parent="." unique_id=327508688 instance=ExtResource("3_srn1f")]
 position = Vector2(676, 406)
+max_health = 5
+current_health = 5
 
 [node name="HUD" parent="." unique_id=263629411 instance=ExtResource("4_oguk8")]
 

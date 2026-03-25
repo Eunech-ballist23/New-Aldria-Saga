@@ -12,10 +12,14 @@ signal player_died
 @export var speed = 90
 @export var knockback_strength = 250.0
 
-# --- COMBO SYSTEM VARIABLES (Added these to fix your errors) ---
+# --- COMBO SYSTEM VARIABLES ---
 var combo_count = 0 
 var combo_timer = 0.0 
 @export var combo_window = 0.6 
+
+# --- FOOTSTEP VARIABLES ---
+var footstep_timer: float = 0.0 
+@export var footstep_delay: float = 0.35 # Tweak this in the Inspector to match your run speed!
 
 # Preload the projectile scene 
 const PROJECTILE_SCENE = preload("res://scenes/ability_projectile.tscn")
@@ -50,12 +54,15 @@ func use_skill(index, cooldown, anim_name):
 	if anim_name == "fireball":
 		damage_to_deal = 4
 		skill_effect = "none"
+		AudioController.fireballSkill()
 	elif anim_name == "water":
 		damage_to_deal = 2
 		skill_effect = "slow"
+		AudioController.waterSkill()
 	elif anim_name == "wind":
 		damage_to_deal = 2
 		skill_effect = "push"
+		AudioController.windSkill()
 	
 	skill_cooldowns[index] = true
 	
@@ -101,9 +108,19 @@ func _physics_process(delta):
 		last_direction = get_direction_name(direction)
 		velocity = direction * speed
 		sprite.play("run_" + last_direction)
+		
+		# --- PLAY YOUR RUN SOUND HERE ---
+		footstep_timer -= delta
+		if footstep_timer <= 0:
+			AudioController.stepRun() 
+			footstep_timer = footstep_delay # Reset the timer
+			
 	else:
 		velocity = Vector2.ZERO
 		sprite.play("idle_" + last_direction)
+		
+		# Reset the timer so the first step plays instantly when you move again
+		footstep_timer = 0.0 
 
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		start_attack()
@@ -155,6 +172,9 @@ func start_attack():
 	
 	if hitbox_shape:
 		hitbox_shape.set_deferred("disabled", false)
+	
+	AudioController.slash1()
+		
 
 func take_damage(amount: int, attacker_pos: Vector2):
 	if is_dead: return
@@ -193,4 +213,5 @@ func _on_animated_sprite_2d_animation_finished():
 		
 func die():
 	print("Player has died!")
+	AudioController.playerDeadSF()
 	player_died.emit()

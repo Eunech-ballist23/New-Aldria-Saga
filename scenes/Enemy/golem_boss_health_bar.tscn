@@ -23,7 +23,7 @@ show_percentage = false
 [node name="DamageBar" type="ProgressBar" parent="." unique_id=1650262318]
 z_index = -1
 layout_mode = 0
-offset_right = 240.0
+offset_right = 144.0
 offset_bottom = 7.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ceemv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1fwt3")
@@ -32,8 +32,7 @@ show_percentage = false
 
 [node name="Label" type="Label" parent="." unique_id=1179071074]
 layout_mode = 0
-offset_left = 76.0
-offset_top = -24.0
-offset_right = 116.0
-offset_bottom = -1.0
+offset_left = 8.0
+offset_top = -23.0
+offset_right = 128.0
 text = "Arc Golem Boss"
