@@ -1559,8 +1559,6 @@ radius = 15.652476
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_tgkm3")
-health = 6
-max_health = 6
 speed = 65
 attack_range = 50.0
 
