@@ -3670,6 +3670,7 @@ tile_set = SubResource("TileSet_meksi")
 [node name="Room1_entrance" parent="TileMapLayersFolder" unique_id=968649093 instance=ExtResource("5_ti78w")]
 z_index = 1
 position = Vector2(813, 727)
+target_level_path = "uid://7rvp0rksfiqc"
 
 [node name="Player" parent="." unique_id=2117678884 instance=ExtResource("5_iodlt")]
 z_index = 2

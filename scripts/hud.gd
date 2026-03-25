@@ -8,10 +8,16 @@ extends CanvasLayer
 ]
 
 func _ready():
-	# Replace 'Player' with the actual path to your player node
 	var player = get_tree().get_first_node_in_group("player") 
+	
+	# Verify the node exists AND it's actually the player (has the signal)
 	if player:
-		player.skill_used.connect(_on_player_skill_used)
+		if player.has_signal("skill_used"):
+			player.skill_used.connect(_on_player_skill_used)
+		else:
+			print("HUD Error: Found 'player' group member, but it's not the Player Character!")
+	else:
+		print("HUD Error: No node found in 'player' group.")
 
 func _on_player_skill_used(index, cooldown):
 	if index < slots.size():

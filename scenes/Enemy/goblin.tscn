@@ -852,7 +852,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pldod")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_right",
 "speed": 5.0
 }, {
@@ -1279,7 +1279,7 @@ hitbox_shape = NodePath("goblin_damage/CollisionShape2D")
 position = Vector2(0.5000003, 0.4999997)
 scale = Vector2(0.828125, 0.828125)
 sprite_frames = SubResource("SpriteFrames_p8f7c")
-animation = &"walk_down"
+animation = &"death_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=43778032]
 position = Vector2(0, -3)

@@ -1582,7 +1582,7 @@ animations = [{
 radius = 18.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8viyr"]
-radius = 28.0
+radius = 24.0
 
 [node name="Player" type="CharacterBody2D" unique_id=2117678884 groups=["player"]]
 z_index = 1
@@ -1597,11 +1597,11 @@ shape = SubResource("CircleShape2D_4ntmi")
 position = Vector2(-2.3841858e-07, -22)
 scale = Vector2(1.5205891, 1.2969483)
 sprite_frames = SubResource("SpriteFrames_ac8n6")
-animation = &"die_down"
+animation = &"attack_right"
 autoplay = "idle_down"
+frame = 1
 
 [node name="player_hurtbox" type="Area2D" parent="." unique_id=160832079]
-visible = false
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("26_sm0op")
@@ -1609,9 +1609,9 @@ script = ExtResource("26_sm0op")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hurtbox" unique_id=651160978]
 position = Vector2(-1, -14)
 shape = SubResource("CircleShape2D_qemgg")
+disabled = true
 
 [node name="player_hitbox" type="Area2D" parent="." unique_id=1257135789]
-visible = false
 collision_layer = 0
 collision_mask = 128
 script = ExtResource("26_8viyr")

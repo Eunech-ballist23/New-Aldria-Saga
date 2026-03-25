@@ -399,14 +399,26 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_k8co7"]
+radius = 13.038404
+
 [node name="AbilityProjectile" type="Area2D" unique_id=1673184852]
 z_index = 4
+collision_layer = 0
+collision_mask = 128
 script = ExtResource("1_cgmrj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=515265539]
 sprite_frames = SubResource("SpriteFrames_o8or2")
-animation = &"wind"
+animation = &"water"
+frame = 20
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1331863462]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=901482039]
+position = Vector2(3, -1)
+shape = SubResource("CircleShape2D_k8co7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

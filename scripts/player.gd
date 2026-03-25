@@ -12,6 +12,11 @@ signal player_died
 @export var speed = 90
 @export var knockback_strength = 250.0
 
+# --- COMBO SYSTEM VARIABLES (Added these to fix your errors) ---
+var combo_count = 0 
+var combo_timer = 0.0 
+@export var combo_window = 0.6 
+
 # Preload the projectile scene 
 const PROJECTILE_SCENE = preload("res://scenes/ability_projectile.tscn")
 
@@ -22,13 +27,12 @@ var is_dead = false
 var is_hurting = false
 var is_attacking = false
 var last_direction = "down"
-var last_direction_vec = Vector2.DOWN # Added to track vector for shooting
+var last_direction_vec = Vector2.DOWN 
 var knockback_velocity: Vector2 = Vector2.ZERO
 
 func _input(event):
 	if is_dead or is_hurting: return
 	
-	# Pass the skill index, cooldown, and the animation name to use_skill 
 	if event.is_action_pressed("skill_1"):
 		use_skill(0, 5.0, "fireball")
 	elif event.is_action_pressed("skill_2"):
@@ -36,39 +40,45 @@ func _input(event):
 	elif event.is_action_pressed("skill_3"):
 		use_skill(2, 10.0, "wind")
 
-# Updated function signature to accept three arguments 
 func use_skill(index, cooldown, anim_name):
-	# 1. Check if the specific slot is already on cooldown [cite: 51]
 	if skill_cooldowns[index]: 
 		return 
 	
-	# 2. Start the internal cooldown [cite: 51]
+	var damage_to_deal = 0
+	var skill_effect = "none"
+	
+	if anim_name == "fireball":
+		damage_to_deal = 4
+		skill_effect = "none"
+	elif anim_name == "water":
+		damage_to_deal = 2
+		skill_effect = "slow"
+	elif anim_name == "wind":
+		damage_to_deal = 2
+		skill_effect = "push"
+	
 	skill_cooldowns[index] = true
 	
-	# 3. Projectile Spawning Logic [cite: 51]
 	var projectile = PROJECTILE_SCENE.instantiate()
-	
-	# Set the projectile to spawn at the player's current position [cite: 51]
 	projectile.global_position = global_position
-	
-	# Use the saved direction vector so it fires where the player is facing [cite: 51]
 	projectile.direction = last_direction_vec
 	
-	# Add the projectile to the current game scene [cite: 51]
+	if "damage" in projectile:
+		projectile.damage = damage_to_deal
+	if "effect" in projectile:
+		projectile.effect = skill_effect
+	
 	get_tree().current_scene.add_child(projectile)
 	
-	# Play the specific animation (fireball, water, or wind) [cite: 51, 53]
-	projectile.play(anim_name)
+	if projectile.has_method("play"):
+		projectile.play(anim_name)
 	
-	# 4. Tell the HUD to start the visual cooldown [cite: 51]
 	skill_used.emit(index, cooldown)
 	
-	# 5. Wait for the duration, then allow the skill again [cite: 51]
 	await get_tree().create_timer(cooldown).timeout
 	skill_cooldowns[index] = false
 
 func _ready() -> void:
-	# Sync the HealthBar with starting health immediately [cite: 51]
 	health_changed.emit(health)
 
 func _physics_process(delta):
@@ -87,7 +97,7 @@ func _physics_process(delta):
 
 	var direction = Input.get_vector("left", "right", "up", "down")
 	if direction != Vector2.ZERO:
-		last_direction_vec = direction # Save the raw vector for shooting direction
+		last_direction_vec = direction 
 		last_direction = get_direction_name(direction)
 		velocity = direction * speed
 		sprite.play("run_" + last_direction)
@@ -95,14 +105,12 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		sprite.play("idle_" + last_direction)
 
-	# Using the corrected Left Mouse Button for attack [cite: 52]
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		start_attack()
 
 	move_and_slide()
 	
 func set_camera_limits(left: int, top: int, right: int, bottom: int):
-	# This requires a Camera2D node to be attached to the Player [cite: 52]
 	if has_node("Camera2D"):
 		$Camera2D.limit_left = left
 		$Camera2D.limit_top = top
@@ -116,8 +124,35 @@ func get_direction_name(dir: Vector2) -> String:
 
 func start_attack():
 	if is_attacking or is_hurting: return
+	
+	# 1. COMBO CALCULATION
+	var current_time = Time.get_unix_time_from_system()
+	if current_time - combo_timer > combo_window:
+		combo_count = 1
+	else:
+		combo_count = (combo_count % 2) + 1 
+		
+	combo_timer = current_time
 	is_attacking = true
-	sprite.play("attack_" + last_direction)
+	
+	# 2. ANIMATION NAME SELECTION
+	var anim_name = "attack_" + last_direction
+	if combo_count == 2:
+		anim_name += "_2"
+
+	# 3. DIRECTIONAL HITBOX POSITIONING
+	match last_direction:
+		"up":
+			$player_hitbox.position = Vector2(0, -42) 
+		"down":
+			$player_hitbox.position = Vector2(0, 14)  
+		"left":
+			$player_hitbox.position = Vector2(-26, -12) 
+		"right":
+			$player_hitbox.position = Vector2(26, -12)  
+
+	sprite.play(anim_name)
+	
 	if hitbox_shape:
 		hitbox_shape.set_deferred("disabled", false)
 
