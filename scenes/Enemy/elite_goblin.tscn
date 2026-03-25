@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dtrhwjlsgnl25" path="res://assets/Orc mobs/PNG/Orc2/Without_shadow/orc2_idle_without_shadow.png" id="6_luof6"]
 [ext_resource type="Texture2D" uid="uid://y63qnjb8t2eu" path="res://assets/Orc mobs/PNG/Orc2/Without_shadow/orc2_run_without_shadow.png" id="7_t2y3r"]
 [ext_resource type="Texture2D" uid="uid://brtyywn3ryjs0" path="res://assets/Orc mobs/PNG/Orc2/Without_shadow/orc2_walk_without_shadow.png" id="8_gy04o"]
+[ext_resource type="Script" uid="uid://bu1d5uhby3y8u" path="res://scripts/enemy/enemy_damage.gd" id="10_qh53b"]
+[ext_resource type="PackedScene" uid="uid://bsn5qxnxmjkaj" path="res://scenes/Enemy/enemy_health_bar.tscn" id="10_wba4d"]
+[ext_resource type="Script" uid="uid://cq4u7ugnbn7fg" path="res://scripts/enemy/enemy_hurtbox.gd" id="11_luof6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i20df"]
 radius = 8.0
@@ -1553,7 +1556,13 @@ radius = 83.725746
 radius = 15.652476
 
 [node name="EliteGoblin" type="CharacterBody2D" unique_id=1238296606]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_tgkm3")
+health = 6
+max_health = 6
+speed = 65
+attack_range = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1983433090]
 position = Vector2(0, -2)
@@ -1565,21 +1574,41 @@ animation = &"attack_down"
 frame = 7
 frame_progress = 1.0
 
-[node name="elitegoblin_damage" type="Area2D" parent="." unique_id=2104114095]
+[node name="elitegoblin_damage" type="Area2D" parent="." unique_id=2104114095 groups=["enemies"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("10_qh53b")
+damage_amount = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="elitegoblin_damage" unique_id=1151431046]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_3swd7")
 debug_color = Color(0.9151925, 0.24891135, 0.38903666, 0.41960785)
 
-[node name="detection_area" type="Area2D" parent="." unique_id=1643031890]
+[node name="detection_area" type="Area2D" parent="." unique_id=1643031890 groups=["enemies"]]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=1849418759]
 shape = SubResource("CircleShape2D_w6lqd")
 
-[node name="elitegobin_hurtbox" type="Area2D" parent="." unique_id=474099579]
+[node name="elitegoblin_hurtbox" type="Area2D" parent="." unique_id=474099579]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("11_luof6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="elitegobin_hurtbox" unique_id=1874663111]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="elitegoblin_hurtbox" unique_id=1874663111]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_6ntfo")
 debug_color = Color(0.2117734, 0.6308197, 0.32086635, 0.41960785)
+
+[node name="EnemyHealthBar" parent="." unique_id=772551262 groups=["enemies"] instance=ExtResource("10_wba4d")]
+offset_left = -14.0
+offset_top = -25.0
+offset_right = 18.0
+offset_bottom = -21.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="elitegoblin_damage" to="elitegoblin_damage" method="_on_area_entered"]
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

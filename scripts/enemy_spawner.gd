@@ -7,7 +7,7 @@ extends Node2D
 @export var max_enemies: int = 6
 
 # --- NEW PERMANENCE LOGIC ---
-@export var total_max_lifetime_spawns: int = 10  # Total enemies this spawner can EVER create
+@export var total_max_lifetime_spawns: int = 1  # Total enemies this spawner can EVER create
 var total_spawned_so_far: int = 0
 var is_exhausted: bool = false
 # ----------------------------

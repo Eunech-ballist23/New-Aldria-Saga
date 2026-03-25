@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://c4giq2wbi4y7u" path="res://assets/Slime mobs/PNG/Slime2/Without_shadow/Slime2_Idle_without_shadow.png" id="5_1eeix"]
 [ext_resource type="Texture2D" uid="uid://dmqw2kimgoxbr" path="res://assets/Slime mobs/PNG/Slime2/Without_shadow/Slime2_Run_without_shadow.png" id="6_1ke0d"]
 [ext_resource type="Texture2D" uid="uid://ctw7nphjwvxth" path="res://assets/Slime mobs/PNG/Slime2/Without_shadow/Slime2_Walk_without_shadow.png" id="7_f6va2"]
+[ext_resource type="Script" uid="uid://bu1d5uhby3y8u" path="res://scripts/enemy/enemy_damage.gd" id="8_60bo3"]
+[ext_resource type="PackedScene" uid="uid://bsn5qxnxmjkaj" path="res://scenes/Enemy/enemy_health_bar.tscn" id="8_l74dj"]
+[ext_resource type="Script" uid="uid://cq4u7ugnbn7fg" path="res://scripts/enemy/enemy_hurtbox.gd" id="9_1eeix"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vw5gi"]
 atlas = ExtResource("2_l74dj")
@@ -724,7 +727,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_70e3s")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_down",
 "speed": 5.0
 }, {
@@ -762,17 +765,17 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jptfm")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_left",
 "speed": 5.0
 }, {
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"attack_right",
 "speed": 5.0
 }, {
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"attack_up",
 "speed": 5.0
 }, {
@@ -807,7 +810,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jglra")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_down",
 "speed": 5.0
 }, {
@@ -842,7 +845,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vajce")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_left",
 "speed": 5.0
 }, {
@@ -877,7 +880,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xym7r")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_right",
 "speed": 5.0
 }, {
@@ -912,7 +915,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nxfw4")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_up",
 "speed": 5.0
 }, {
@@ -932,7 +935,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e5q6r")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt_down",
 "speed": 5.0
 }, {
@@ -952,7 +955,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i2uq6")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt_left",
 "speed": 5.0
 }, {
@@ -972,7 +975,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b5o60")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt_right",
 "speed": 5.0
 }, {
@@ -992,7 +995,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_utfil")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt_up",
 "speed": 5.0
 }, {
@@ -1287,7 +1290,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f2fu1")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk_right",
 "speed": 5.0
 }, {
@@ -1316,7 +1319,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0g4ss")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk_up",
 "speed": 5.0
 }]
@@ -1330,32 +1333,54 @@ radius = 13.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_eqabn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jh53j"]
-radius = 47.042534
+radius = 107.87029
 
-[node name="DecaySlime" type="CharacterBody2D" unique_id=236446630]
+[node name="DecaySlime" type="CharacterBody2D" unique_id=236446630 groups=["enemies"]]
+z_index = 2
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_mjtm0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=8165598]
 sprite_frames = SubResource("SpriteFrames_ksmu1")
-animation = &"walk_down"
+animation = &"walk_right"
 autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=597074090]
 shape = SubResource("CircleShape2D_1wn1e")
 
-[node name="decaySlime_hitbox" type="Area2D" parent="." unique_id=175810725]
+[node name="decaySlime_hitbox" type="Area2D" parent="." unique_id=175810725 groups=["enemies"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_60bo3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="decaySlime_hitbox" unique_id=105258033]
 shape = SubResource("CircleShape2D_utgee")
 debug_color = Color(0.9566557, 0.14865595, 0.38113236, 0.41960785)
 
 [node name="decaySlime_hurtbox" type="Area2D" parent="." unique_id=958060139]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("9_1eeix")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="decaySlime_hurtbox" unique_id=881707700]
 shape = SubResource("CircleShape2D_eqabn")
 debug_color = Color(0.29313558, 0.6210082, 0.30622077, 0.41960785)
 
-[node name="detection_area" type="Area2D" parent="." unique_id=816464276]
+[node name="detection_area" type="Area2D" parent="." unique_id=816464276 groups=["enemies"]]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=1148787122]
 shape = SubResource("CircleShape2D_jh53j")
+
+[node name="EnemyHealthBar" parent="." unique_id=772551262 groups=["enemies"] instance=ExtResource("8_l74dj")]
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 18.0
+offset_bottom = -10.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="decaySlime_hitbox" to="decaySlime_hitbox" method="_on_area_entered"]
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

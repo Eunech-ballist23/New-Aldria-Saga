@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cqr3b36t26shq" path="res://assets/Slime mobs/PNG/Slime1/Without_shadow/Slime1_Walk_without_shadow.png" id="4_gstla"]
 [ext_resource type="Texture2D" uid="uid://dp47l4frwleej" path="res://assets/Slime mobs/PNG/Slime1/Without_shadow/Slime1_Run_without_shadow.png" id="4_yx3ar"]
 [ext_resource type="PackedScene" uid="uid://butayw5phmbcu" path="res://scenes/slime_damage.tscn" id="5_2npkn"]
-[ext_resource type="Script" uid="uid://bn0gbq4alunl5" path="res://scripts/enemy/slime_hurtbox.gd" id="9_g7ttq"]
+[ext_resource type="Script" uid="uid://bu1d5uhby3y8u" path="res://scripts/enemy/enemy_damage.gd" id="9_0xw0j"]
+[ext_resource type="Script" uid="uid://cq4u7ugnbn7fg" path="res://scripts/enemy/enemy_hurtbox.gd" id="9_ts781"]
 [ext_resource type="PackedScene" uid="uid://bsn5qxnxmjkaj" path="res://scenes/Enemy/enemy_health_bar.tscn" id="10_ts781"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7k5ve"]
@@ -1462,11 +1463,13 @@ radius = 24.020824
 [sub_resource type="CircleShape2D" id="CircleShape2D_231f7"]
 radius = 14.56022
 
-[node name="Slime" type="CharacterBody2D" unique_id=1735196882 node_paths=PackedStringArray("hitbox_shape")]
+[node name="Slime" type="CharacterBody2D" unique_id=1735196882 node_paths=PackedStringArray("hitbox_shape") groups=["enemies"]]
 z_index = 2
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_pjw23")
+speed = 45
+attack_range = 30.0
 hitbox_shape = NodePath("slime_damage/CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1682472739]
@@ -1488,6 +1491,7 @@ shape = SubResource("CircleShape2D_3tc40")
 [node name="slime_damage" parent="." unique_id=1018655511 instance=ExtResource("5_2npkn")]
 collision_layer = 0
 collision_mask = 2
+script = ExtResource("9_0xw0j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slime_damage" unique_id=975885565]
 z_index = 1
@@ -1497,7 +1501,7 @@ disabled = true
 [node name="slime_hurtbox" type="Area2D" parent="." unique_id=2086512100]
 collision_layer = 128
 collision_mask = 0
-script = ExtResource("9_g7ttq")
+script = ExtResource("9_ts781")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slime_hurtbox" unique_id=8934905]
 position = Vector2(0, 3)
