@@ -9,7 +9,6 @@ class_name EnemyBase
 @export var hitbox_shape: CollisionShape2D 
 
 # --- LOOT SYSTEM ---
-# Drag your coins.tscn into this slot in the Inspector
 @export var loot_item: PackedScene = preload("res://scenes/coins.tscn")
 
 @onready var sprite = $AnimatedSprite2D
@@ -114,20 +113,18 @@ func apply_knockback(from_pos: Vector2, multiplier: float = 1.0):
 	knockback_velocity = from_pos.direction_to(global_position) * strength
 
 func flash_red():
-	if is_slowed: return
+	var restore_color = Color(0.5, 0.5, 1.0) if is_slowed else Color(1, 1, 1)
 	sprite.modulate = Color(10, 1, 1)
 	var tween = get_tree().create_tween()
-	tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.2)
+	tween.tween_property(sprite, "modulate", restore_color, 0.2)
 
-# --- LOOT SPAWNING ---
 func spawn_loot():
 	if loot_item:
 		var loot_instance = loot_item.instantiate()
 		loot_instance.global_position = global_position
-		# Always add loot to the root of the scene, not the enemy
 		get_tree().current_scene.add_child(loot_instance)
 
-# --- COMBAT & WANDER LOGIC ---
+# --- COMBAT LOGIC UPDATED ---
 
 func process_combat_logic():
 	var dist = global_position.distance_to(player.global_position)
@@ -141,11 +138,32 @@ func process_combat_logic():
 func start_attack():
 	if is_attacking or is_hurting or is_dead: return
 	is_attacking = true
-	var dir_name = get_direction_name(global_position.direction_to(player.global_position))
+	
+	# Determine direction to the player for animation and hitbox positioning 
+	var dir_to_player = global_position.direction_to(player.global_position)
+	var dir_name = get_direction_name(dir_to_player)
+	
+	# --- DIRECTIONAL HITBOX POSITIONING ---
+	if hitbox_shape:
+		match dir_name:
+			"up":
+				hitbox_shape.position = Vector2(0, -20)
+			"down":
+				hitbox_shape.position = Vector2(0, 15)
+			"left":
+				hitbox_shape.position = Vector2(-20, 0)
+			"right":
+				hitbox_shape.position = Vector2(20, 0)
+
 	sprite.play("attack_" + dir_name)
+	
+	# Wait for the frame where the enemy actually "swings" 
 	await get_tree().create_timer(0.2).timeout 
+	
 	if is_attacking and not is_hurting and not is_dead and hitbox_shape:
 		hitbox_shape.set_deferred("disabled", false)
+
+# --- WANDER LOGIC ---
 
 func process_wander_logic(delta):
 	state_timer -= delta
@@ -179,7 +197,7 @@ func _on_animated_sprite_2d_animation_finished():
 	elif anim.begins_with("hurt"):
 		is_hurting = false 
 	elif anim.begins_with("death"):
-		spawn_loot() # Drops the coins right before the enemy is removed
+		spawn_loot()
 		queue_free()
 
 func _on_detection_area_body_entered(body):

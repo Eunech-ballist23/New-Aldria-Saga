@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bx6vcvfnulpsg" path="res://assets/Orc mobs/PNG/Orc1/Without_shadow/orc1_death_without_shadow.png" id="2_vu5tg"]
 [ext_resource type="Texture2D" uid="uid://uqjoy3avspk4" path="res://assets/Orc mobs/PNG/Orc1/Without_shadow/orc1_hurt_without_shadow.png" id="4_4h2nj"]
 [ext_resource type="Texture2D" uid="uid://dm6p65ytyj34a" path="res://assets/Orc mobs/PNG/Orc1/Without_shadow/orc1_run_without_shadow.png" id="4_macxp"]
-[ext_resource type="Script" uid="uid://bu1d5uhby3y8u" path="res://scripts/enemy/goblin_damage.gd" id="6_lqati"]
+[ext_resource type="Script" uid="uid://bu1d5uhby3y8u" path="res://scripts/enemy/enemy_damage.gd" id="6_lqati"]
 [ext_resource type="Texture2D" uid="uid://bmyp3netpfiy2" path="res://assets/Orc mobs/PNG/Orc1/Without_shadow/orc1_walk_without_shadow.png" id="7_dnnjk"]
-[ext_resource type="Script" uid="uid://cq4u7ugnbn7fg" path="res://scripts/enemy/goblin_hurtbox.gd" id="9_dnnjk"]
+[ext_resource type="Script" uid="uid://cq4u7ugnbn7fg" path="res://scripts/enemy/enemy_hurtbox.gd" id="9_dnnjk"]
 [ext_resource type="PackedScene" uid="uid://bsn5qxnxmjkaj" path="res://scenes/Enemy/enemy_health_bar.tscn" id="10_5o8w6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8m2n1"]
@@ -1273,6 +1273,10 @@ z_index = 2
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_g1p1y")
+health = 6
+max_health = 6
+speed = 65
+attack_range = 50.0
 hitbox_shape = NodePath("goblin_damage/CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=130574391]
@@ -1293,10 +1297,11 @@ collision_mask = 2
 light_mask = 0
 shape = SubResource("CircleShape2D_whqo8")
 
-[node name="goblin_damage" type="Area2D" parent="." unique_id=458395758]
+[node name="goblin_damage" type="Area2D" parent="." unique_id=458395758 groups=["enemies"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("6_lqati")
+damage_amount = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="goblin_damage" unique_id=511680593]
 z_index = 1
