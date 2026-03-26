@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal boss_died # manual script signal that caan be used on win screen when it return death animation
+signal boss_died # manual script signal that can be used on win screen when it returns death animation
 
 # Stats
 @export var max_health: int = 2
@@ -119,8 +119,16 @@ func _start_attack() -> void:
 		hit_box_collision.disabled = true
 	current_state = State.IDLE
 
-func take_damage(amount: int, _pos: Vector2):
+# --- UPDATED: Now accepts the 3rd 'effect' argument safely! ---
+func take_damage(amount: int, _pos: Vector2, effect: String = "none"):
 	current_health -= amount
+	
+	# Optional logic if you want the boss to be affected by the slow/push
+	if effect == "slow":
+		print("Golem Boss is slowed!")
+	elif effect == "push":
+		print("Golem Boss is pushed back!")
+		
 	if current_health <= 0:
 		_die()
 

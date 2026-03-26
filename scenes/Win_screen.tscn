@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cyvurew4qmtlw" path="res://scripts/win_screen.gd" id="1_ughe6"]
 
-[node name="WinScreen" type="CanvasLayer" unique_id=1060099317]
+[node name="WinScreen" type="CanvasLayer" unique_id=1060099317 node_paths=PackedStringArray("next_level")]
 script = ExtResource("1_ughe6")
+next_level = NodePath("ColorRect/CenterContainer/VBoxContainer/NextLevel")
 metadata/_edit_vertical_guides_ = [-11.0]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1548603474]
@@ -36,4 +37,5 @@ text = "Next Level"
 layout_mode = 2
 text = "Exit Game"
 
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/ExitGame" to="." method="_on_exit_game_pressed"]

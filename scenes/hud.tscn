@@ -166,7 +166,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxEmpty_toqtt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ahhtf")
-value = 60.0
+value = 100.0
 show_percentage = false
 script = ExtResource("1_ahhtf")
 
@@ -180,7 +180,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_toqtt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_oo0fn")
-value = 80.0
+value = 60.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="HealthBar" unique_id=1720097063]

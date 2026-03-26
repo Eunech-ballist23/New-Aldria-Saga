@@ -848,6 +848,10 @@ visible = false
 
 [node name="WinScreen" parent="." unique_id=1060099317 instance=ExtResource("7_ggoc3")]
 visible = false
+next_level_path = "uid://bmlaoetdx0tbq"
 
 [node name="VictorySound" type="AudioStreamPlayer" parent="." unique_id=695708328]
 stream = ExtResource("8_ggoc3")
+volume_db = -32.13
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=2033419737]

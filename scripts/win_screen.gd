@@ -1,7 +1,11 @@
 extends CanvasLayer
 
+# --- Creates a slot in the Inspector to choose the next level ---
+@export_file("*.tscn") var next_level_path: String
+
 # Target the ColorRect which contains all your UI elements
 @onready var background = $ColorRect 
+@export var next_level: Button
 
 func _ready() -> void:
 	# Start with the background transparent
@@ -11,6 +15,13 @@ func _ready() -> void:
 
 func show_win():
 	show()
+	
+	# --- Hide the "Next Level" button if this is the final level! ---
+	if next_level:
+		if next_level_path == "":
+			next_level.hide()
+		else:
+			next_level.show()
 	
 	if background:
 		# Create the Tween to handle the smooth transition on the ColorRect
@@ -23,9 +34,20 @@ func show_win():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _on_next_level_pressed():
+	print("THE BUTTON WAS CLICKED!") # <--- Add this line!
+	
 	get_tree().paused = false
-	# Add your next scene path here when ready
-	# get_tree().change_scene_to_file("res://scenes/level_2.tscn")
+	
+	if next_level_path != "":
+		print("Trying to load: ", next_level_path) # <--- Add this line!
+		get_tree().change_scene_to_file(next_level_path)
+	else:
+		print("Warning: You forgot to set the next_level_path in the Inspector!")
+
+func _on_main_menu_pressed() -> void:
+	get_tree().paused = false
+	# Adjust this path if your main menu is called something else
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_exit_game_pressed() -> void:
 	get_tree().quit()
