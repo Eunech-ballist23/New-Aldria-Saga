@@ -3676,7 +3676,6 @@ target_level_path = "uid://7rvp0rksfiqc"
 [node name="Player" parent="." unique_id=2117678884 instance=ExtResource("5_iodlt")]
 z_index = 2
 position = Vector2(-53, 91)
-collision_layer = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1223262997]
 zoom = Vector2(2, 2)

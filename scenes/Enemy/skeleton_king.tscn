@@ -3644,7 +3644,8 @@ script = ExtResource("1_no5a0")
 shape = SubResource("CapsuleShape2D_auu67")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=17217547]
-position = Vector2(1, 0)
+position = Vector2(1, -2)
+scale = Vector2(1.1666666, 1.1875)
 sprite_frames = SubResource("SpriteFrames_esb67")
 animation = &"walk_up"
 
@@ -3653,6 +3654,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=345244260]
+position = Vector2(-4, 2)
 shape = SubResource("CircleShape2D_0p6pq")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=56949423 groups=["enemy_hitbox"]]
@@ -3664,10 +3666,6 @@ script = ExtResource("30_53mpq")
 shape = SubResource("CircleShape2D_llygx")
 debug_color = Color(0.94151694, 0.20495397, 0.3419147, 0.41960785)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hitbox" unique_id=1108974851]
-sprite_frames = SubResource("SpriteFrames_cqcfb")
-animation = &"idle_up"
-autoplay = "idle_down"
 
 [node name="Skeletonking_hurtbox" type="Area2D" parent="." unique_id=1573455570 groups=["enemy_hurtbox"]]
 collision_layer = 128
@@ -3683,6 +3681,7 @@ offset_left = -16.0
 offset_top = -24.0
 offset_right = 16.0
 offset_bottom = -20.0
+value = 100.0
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1323258624]
 wait_time = 2.0

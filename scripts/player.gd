@@ -11,6 +11,7 @@ signal player_died
 @export var health = 10
 @export var speed = 90
 @export var knockback_strength = 250.0
+@export var basic_attack_damage = 1 # Added this so you can tweak damage in the Inspector!
 
 # --- COMBO SYSTEM VARIABLES ---
 var combo_count = 0 
@@ -20,6 +21,13 @@ var combo_timer = 0.0
 # --- FOOTSTEP VARIABLES ---
 var footstep_timer: float = 0.0 
 @export var footstep_delay: float = 0.35 # Tweak this in the Inspector to match your run speed!
+
+# --- DASH VARIABLES ---
+@export var dash_speed: float = 350.0 # Speed during the dash
+@export var dash_duration: float = 0.25 # How long the dash lasts
+@export var dash_cooldown: float = 0.8 # Time between dashes
+var is_dashing: bool = false
+var dash_cooldown_timer: float = 0.0
 
 # Preload the projectile scene 
 const PROJECTILE_SCENE = preload("res://scenes/ability_projectile.tscn")
@@ -34,8 +42,15 @@ var last_direction = "down"
 var last_direction_vec = Vector2.DOWN 
 var knockback_velocity: Vector2 = Vector2.ZERO
 
+func _ready() -> void:
+	health_changed.emit(health)
+	
+	# NEW: Connect the hitbox Area2D to detect overlapping bodies
+	if has_node("player_hitbox"):
+		$player_hitbox.body_entered.connect(_on_player_hitbox_body_entered)
+
 func _input(event):
-	if is_dead or is_hurting: return
+	if is_dead or is_hurting or is_dashing: return
 	
 	if event.is_action_pressed("skill_1"):
 		use_skill(0, 5.0, "fireball")
@@ -85,9 +100,6 @@ func use_skill(index, cooldown, anim_name):
 	await get_tree().create_timer(cooldown).timeout
 	skill_cooldowns[index] = false
 
-func _ready() -> void:
-	health_changed.emit(health)
-
 func _physics_process(delta):
 	if is_dead: return 
 	
@@ -99,6 +111,17 @@ func _physics_process(delta):
 
 	if is_attacking or is_hurting:
 		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+
+	# Handle Dash Input (Left Shift)
+	dash_cooldown_timer -= delta
+	if Input.is_key_pressed(KEY_SHIFT) and !is_dashing and dash_cooldown_timer <= 0:
+		start_dash()
+		return
+
+	if is_dashing:
+		# Velocity is handled in start_dash and remains constant during duration
 		move_and_slide()
 		return
 
@@ -126,6 +149,25 @@ func _physics_process(delta):
 		start_attack()
 
 	move_and_slide()
+
+func start_dash():
+	is_dashing = true
+	dash_cooldown_timer = dash_cooldown
+	
+	# Set dash velocity in the direction we are currently moving or facing
+	velocity = last_direction_vec.normalized() * dash_speed
+	
+	# Play dash animation
+	sprite.play("dash_" + last_direction)
+	
+	# Optional: Add dash sound here
+	# AudioController.play_dash()
+
+	# Duration handled by timer
+	await get_tree().create_timer(dash_duration).timeout
+	# is_dashing is reset here or in animation_finished
+	if is_dashing:
+		is_dashing = false
 	
 func set_camera_limits(left: int, top: int, right: int, bottom: int):
 	if has_node("Camera2D"):
@@ -174,7 +216,6 @@ func start_attack():
 		hitbox_shape.set_deferred("disabled", false)
 	
 	AudioController.slash1()
-		
 
 func take_damage(amount: int, attacker_pos: Vector2):
 	if is_dead: return
@@ -207,6 +248,8 @@ func _on_animated_sprite_2d_animation_finished():
 			hitbox_shape.set_deferred("disabled", true)
 	elif anim.begins_with("hurt"):
 		is_hurting = false
+	elif anim.begins_with("dash"):
+		is_dashing = false
 	elif anim.begins_with("die"):
 		set_physics_process(false)
 		die()
@@ -215,3 +258,8 @@ func die():
 	print("Player has died!")
 	AudioController.playerDeadSF()
 	player_died.emit()
+
+func _on_player_hitbox_body_entered(body):
+	# Check if the thing we hit can take damage (works for enemies AND bosses)
+	if body.has_method("take_damage"):
+		body.take_damage(basic_attack_damage, global_position)

@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://diobbdl6rm1oo" path="res://scripts/golem_normal_attack_hit_box.gd" id="6_5l580"]
 [ext_resource type="Script" uid="uid://cb3mtvtv64cmo" path="res://scripts/golem_hurt_box.gd" id="7_y7hf4"]
 [ext_resource type="PackedScene" uid="uid://bqrhmr610hi3p" path="res://scenes/Enemy/golem_boss_health_bar.tscn" id="8_y7hf4"]
+[ext_resource type="Script" uid="uid://81tjtatmsjnd" path="res://scripts/enemy_health_bar.gd" id="9_health_bar_script"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4bf6e"]
 atlas = ExtResource("1_yysmy")
@@ -562,6 +563,8 @@ radius = 95.35198
 
 [node name="GolemBoss" type="CharacterBody2D" unique_id=327508688]
 z_index = 5
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_udy84")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=135723094]
@@ -605,5 +608,6 @@ offset_top = -36.0
 offset_right = 140.0
 offset_bottom = -28.0
 value = 100.0
+script = ExtResource("9_health_bar_script")
 
 [connection signal="area_entered" from="GolemNormalAttack_HitBox" to="GolemNormalAttack_HitBox" method="_on_area_entered"]

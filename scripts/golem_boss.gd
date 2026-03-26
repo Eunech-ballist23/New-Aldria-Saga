@@ -3,8 +3,8 @@ extends CharacterBody2D
 signal boss_died # manual script signal that can be used on win screen when it returns death animation
 
 # Stats
-@export var max_health: int = 2
-@export var current_health: int = 2
+@export var max_health: int = 5
+@export var current_health: int = 5
 @export var speed: float = 40.0 
 @export var acceleration: float = 200.0
 @export var gravity: float = 0.0 # Top-down/4-way movement
@@ -19,9 +19,12 @@ var wander_timer: float = 0.0
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_box_collision: CollisionShape2D = $GolemNormalAttack_HitBox/CollisionShape2D
 @onready var detection_area: Area2D = $area_detection
+@onready var health_bar = $GolemBossHealthBar
 
 func _ready() -> void:
 	current_health = max_health
+	if health_bar and health_bar.has_method("update_health"):
+		health_bar.update_health(current_health, max_health)
 	if hit_box_collision:
 		hit_box_collision.disabled = true
 	_pick_new_wander_target()
@@ -123,6 +126,9 @@ func _start_attack() -> void:
 func take_damage(amount: int, _pos: Vector2, effect: String = "none"):
 	current_health -= amount
 	
+	if health_bar and health_bar.has_method("update_health"):
+		health_bar.update_health(current_health, max_health)
+		
 	# Optional logic if you want the boss to be affected by the slow/push
 	if effect == "slow":
 		print("Golem Boss is slowed!")

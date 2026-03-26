@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal boss_defeated
 
 @export_group("Stats")
-@export var max_health: int = 500
+@export var max_health: int = 5
 @export var move_speed: float = 60.0
 @export var attack_range: float = 50.0
 
@@ -22,8 +22,8 @@ func _ready():
 	add_to_group("enemies")
 	add_to_group("boss")
 	
-	if health_bar and health_bar.has_method("init_health"):
-		health_bar.init_health(max_health)
+	if health_bar and health_bar.has_method("update_health"):
+		health_bar.update_health(max_health, max_health)
 
 func _physics_process(_delta):
 	if is_dead: return
@@ -76,17 +76,28 @@ func perform_attack():
 	if attack_timer:
 		attack_timer.start()
 	
+	# Enable hitbox during the attack window
+	set_hitbox(true)
+	
 	# SAFETY UNFREEZE: Forces boss to move again after 1.5s even if signals fail
 	await get_tree().create_timer(1.5).timeout
 	if !is_dead:
+		set_hitbox(false)
 		is_acting = false
 
-func take_damage(amount: int, _attacker_pos: Vector2 = Vector2.ZERO):
+func take_damage(amount: int, _attacker_pos: Vector2 = Vector2.ZERO, effect: String = "none"):
 	if is_dead: return
 	
 	current_health -= amount
-	if health_bar: health_bar.health = current_health
+	if health_bar and health_bar.has_method("update_health"):
+		health_bar.update_health(current_health, max_health)
 	
+	# Optional effect handling (same as golem boss)
+	if effect == "slow":
+		print("Boss is slowed!")
+	elif effect == "push":
+		print("Boss is pushed back!")
+		
 	if current_health <= 0:
 		die()
 	else:
@@ -144,5 +155,3 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 func set_hitbox(active: bool):
 	if has_node("Hitbox"):
 		$Hitbox.set_deferred("monitoring", active)
-	if active == false:
-		is_acting = false

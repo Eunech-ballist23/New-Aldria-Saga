@@ -405,7 +405,7 @@ radius = 13.038404
 [node name="AbilityProjectile" type="Area2D" unique_id=1673184852]
 z_index = 4
 collision_layer = 0
-collision_mask = 128
+collision_mask = 132
 script = ExtResource("1_cgmrj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=515265539]

@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://d0ypvwxwetj26" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/Tower_Desert_RedStone_1.png" id="19_xkce0"]
 [ext_resource type="PackedScene" uid="uid://df4kes8oud1eq" path="res://scenes/Enemy/enemy_spawner.tscn" id="23_mxvld"]
 [ext_resource type="PackedScene" uid="uid://ejq0c2d7oie8" path="res://scenes/Enemy/elite_goblin.tscn" id="24_t6hgj"]
-[ext_resource type="PackedScene" uid="uid://cc6wnbwkq22kn" path="res://scenes/Enemy/decay_slime.tscn" id="25_5hdc5"]
+[ext_resource type="PackedScene" uid="uid://cc6wnbwkq22kn" path="res://scenes/Enemy/Decay_slime.tscn" id="25_5hdc5"]
 [ext_resource type="PackedScene" uid="uid://djbo0cg7sb6tp" path="res://scenes/Enemy/predatory_plant3.tscn" id="26_382lo"]
 [ext_resource type="AudioStream" uid="uid://dmhldq7rnxofk" path="res://assets/SFX/level1BGM.mp3" id="27_382lo"]
 [ext_resource type="PackedScene" uid="uid://1vgcs5rmoltr" path="res://scenes/Enemy/wraith.tscn" id="27_m4i76"]
@@ -29358,4 +29358,10 @@ autoplay = true
 position = Vector2(559, -188)
 
 [node name="WinScreen" parent="." unique_id=1060099317 instance=ExtResource("29_ji6fi")]
-visible = false
+next_level_path = "uid://cdb8pdded5nh3"
+metadata/_edit_vertical_guides_ = [-11.0]
+
+[node name="backgroundmusic2" type="AudioStreamPlayer" parent="." unique_id=1569380528]
+stream = ExtResource("27_382lo")
+volume_db = -20.293
+autoplay = true

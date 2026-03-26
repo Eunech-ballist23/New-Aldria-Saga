@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dijetqpniw4q6" path="res://assets/GameUIDesign/download (1).png" id="1_yubou"]
 [ext_resource type="AudioStream" uid="uid://dmhldq7rnxofk" path="res://assets/SFX/level1BGM.mp3" id="3_u001w"]
 
-[sub_resource type="SystemFont" id="SystemFont_yubou"]
-font_names = PackedStringArray("Comic Sans MS")
-
 [sub_resource type="SystemFont" id="SystemFont_ojb23"]
 font_names = PackedStringArray("Arial Rounded MT")
 
@@ -82,26 +79,30 @@ texture = ExtResource("1_yubou")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu" unique_id=1230527230]
+[node name="TitleContainer" type="CenterContainer" parent="MainMenu" unique_id=1230527230]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -629.0
-offset_right = 629.0
-offset_bottom = 238.0
+offset_left = -600.0
+offset_top = 50.0
+offset_right = 600.0
+offset_bottom = 300.0
 grow_horizontal = 2
 
-[node name="Label" type="Label" parent="MainMenu/HBoxContainer" unique_id=1988578045]
+[node name="Label" type="Label" parent="MainMenu/TitleContainer" unique_id=1988578045]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.11514107, 0.046520837, 0.022509295, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_colors/font_outline_color = Color(0.12834376, 0.12834376, 0.12834373, 1)
-theme_override_constants/paragraph_spacing = 900
-theme_override_constants/shadow_outline_size = 504
-theme_override_fonts/font = SubResource("SystemFont_yubou")
-theme_override_font_sizes/font_size = 170
-text = "Quest of Aldria"
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.270588, 0.196078, 0.164706, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.196078, 0.164706, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = SubResource("SystemFont_ojb23")
+theme_override_font_sizes/font_size = 150
+text = "Aldira Sagas"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu" unique_id=101877599]
 custom_minimum_size = Vector2(300, 0)

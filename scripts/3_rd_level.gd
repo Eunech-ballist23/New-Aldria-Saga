@@ -3,6 +3,8 @@ extends Node2D
 @onready var player = $Player
 @onready var health_bar = $HUD/HealthBar
 @onready var game_over_ui = $GameOverScreen
+@onready var win_screen = $WinScreen
+@onready var skeleton_king = $SkeletonKing
 
 # -> Drag your TileMap node here if the name is different! <-
 @onready var tilemap = $Grasses_and_terrains 
@@ -17,6 +19,9 @@ func _ready() -> void:
 	
 	if player and health_bar:
 		player.health_changed.connect(health_bar.update_health)
+
+	if skeleton_king:
+		skeleton_king.boss_defeated.connect(_on_boss_defeated)
 
 	# --- 2. AUTOMATIC CAMERA LIMITS (GODOT 4) ---
 	if player and tilemap:
@@ -40,4 +45,11 @@ func _on_player_died():
 	game_over_ui.show_game_over()
 	
 	# Optional: Stop the game world logic
+	get_tree().paused = true
+
+func _on_boss_defeated():
+	# Wait a small moment for the death animation to play out (optional)
+	await get_tree().create_timer(2.0).timeout
+	if win_screen:
+		win_screen.show_win()
 	get_tree().paused = true

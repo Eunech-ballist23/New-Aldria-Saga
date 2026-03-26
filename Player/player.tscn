@@ -1609,11 +1609,10 @@ script = ExtResource("26_sm0op")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hurtbox" unique_id=651160978]
 position = Vector2(-1, -14)
 shape = SubResource("CircleShape2D_qemgg")
-disabled = true
 
 [node name="player_hitbox" type="Area2D" parent="." unique_id=1257135789]
 collision_layer = 0
-collision_mask = 128
+collision_mask = 4
 script = ExtResource("26_8viyr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox" unique_id=537612605]

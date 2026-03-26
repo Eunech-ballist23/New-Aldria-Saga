@@ -5,7 +5,9 @@ extends CanvasLayer
 
 # Target the ColorRect which contains all your UI elements
 @onready var background = $ColorRect 
-@export var next_level: Button
+@onready var label = $ColorRect/CenterContainer/VBoxContainer/Label
+@onready var next_level_btn = $ColorRect/CenterContainer/VBoxContainer/NextLevel
+@onready var exit_btn = $ColorRect/CenterContainer/VBoxContainer/ExitGame
 
 func _ready() -> void:
 	# Start with the background transparent
@@ -17,37 +19,41 @@ func show_win():
 	show()
 	
 	# --- Hide the "Next Level" button if this is the final level! ---
-	if next_level:
-		if next_level_path == "":
-			next_level.hide()
+	if next_level_btn:
+		if next_level_path == "" or next_level_path == null:
+			next_level_btn.hide()
 		else:
-			next_level.show()
+			next_level_btn.show()
 	
 	if background:
-		# Create the Tween to handle the smooth transition on the ColorRect
-		var tween = create_tween()
+		# Create the Tween for a premium fade-in effect
+		var tween = create_tween().set_parallel(true)
 		
-		# Transition the background's alpha from 0.0 to 1.0 over 1.5 seconds
-		tween.tween_property(background, "modulate:a", 1.0, 1.5).set_trans(Tween.TRANS_SINE)
+		# Fade in the background
+		tween.tween_property(background, "modulate:a", 1.0, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		
+		# Scale up the label for a punchy effect
+		if label:
+			label.scale = Vector2(0.5, 0.5)
+			label.pivot_offset = label.size / 2
+			tween.tween_property(label, "scale", Vector2(1.2, 1.2), 0.8).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			
+		# Chain a pulse effect after the fade
+		tween.chain().tween_property(label, "scale", Vector2(1.0, 1.0), 0.5).set_trans(Tween.TRANS_SINE)
 	
 	# This allows the UI to work even if the game is paused
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _on_next_level_pressed():
-	print("THE BUTTON WAS CLICKED!") # <--- Add this line!
-	
 	get_tree().paused = false
-	
-	if next_level_path != "":
-		print("Trying to load: ", next_level_path) # <--- Add this line!
+	if next_level_path != "" and next_level_path != null:
 		get_tree().change_scene_to_file(next_level_path)
 	else:
-		print("Warning: You forgot to set the next_level_path in the Inspector!")
+		print("Warning: No next level path set!")
 
-func _on_main_menu_pressed() -> void:
+func _on_title_button_pressed() -> void:
 	get_tree().paused = false
-	# Adjust this path if your main menu is called something else
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/game_ui.tscn")
 
 func _on_exit_game_pressed() -> void:
 	get_tree().quit()
