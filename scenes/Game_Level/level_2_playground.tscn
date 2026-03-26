@@ -24,8 +24,11 @@
 [ext_resource type="Texture2D" uid="uid://d0ypvwxwetj26" path="res://assets/The Fan-tasy Tileset - Desert Oasis/Art/Buildings/Tower_Desert_RedStone_1.png" id="19_xkce0"]
 [ext_resource type="PackedScene" uid="uid://df4kes8oud1eq" path="res://scenes/Enemy/enemy_spawner.tscn" id="23_mxvld"]
 [ext_resource type="PackedScene" uid="uid://ejq0c2d7oie8" path="res://scenes/Enemy/elite_goblin.tscn" id="24_t6hgj"]
-[ext_resource type="PackedScene" uid="uid://cc6wnbwkq22kn" path="res://scenes/Enemy/Decay_slime.tscn" id="25_5hdc5"]
+[ext_resource type="PackedScene" uid="uid://cc6wnbwkq22kn" path="res://scenes/Enemy/decay_slime.tscn" id="25_5hdc5"]
 [ext_resource type="PackedScene" uid="uid://djbo0cg7sb6tp" path="res://scenes/Enemy/predatory_plant3.tscn" id="26_382lo"]
+[ext_resource type="AudioStream" uid="uid://dmhldq7rnxofk" path="res://assets/SFX/level1BGM.mp3" id="27_382lo"]
+[ext_resource type="PackedScene" uid="uid://1vgcs5rmoltr" path="res://scenes/Enemy/wraith.tscn" id="27_m4i76"]
+[ext_resource type="PackedScene" uid="uid://b1u27j7j4qlic" path="res://scenes/Win_screen.tscn" id="29_ji6fi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ty1ij"]
 texture = ExtResource("3_0j8dr")
@@ -29315,7 +29318,7 @@ position = Vector2(326, 308)
 zoom = Vector2(2, 2)
 limit_left = -751
 limit_top = -386
-limit_right = 1346
+limit_right = 1102
 limit_bottom = 1059
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
@@ -29341,7 +29344,18 @@ enemy_scenes = Array[PackedScene]([ExtResource("25_5hdc5")])
 [node name="Marker2D" type="Marker2D" parent="Enemy-Spawner/DecaySlime" unique_id=157022822]
 
 [node name="PredatoryPlant" parent="Enemy-Spawner" unique_id=392448496 instance=ExtResource("23_mxvld")]
-position = Vector2(542, -213)
+position = Vector2(-451, -135)
 enemy_scenes = Array[PackedScene]([ExtResource("26_382lo")])
 
 [node name="Marker2D" type="Marker2D" parent="Enemy-Spawner/PredatoryPlant" unique_id=2142899354]
+
+[node name="backgroundmusic" type="AudioStreamPlayer" parent="." unique_id=1399578728]
+stream = ExtResource("27_382lo")
+volume_db = -20.293
+autoplay = true
+
+[node name="Wraith" parent="." unique_id=1841805827 instance=ExtResource("27_m4i76")]
+position = Vector2(559, -188)
+
+[node name="WinScreen" parent="." unique_id=1060099317 instance=ExtResource("29_ji6fi")]
+visible = false
